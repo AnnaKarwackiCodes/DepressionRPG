@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class MenuStuff : MonoBehaviour {
     public GameObject[] buttons;
 
-    private bool isDown = false;
-    private bool isUp = false;
+    private bool isDownW = false;
+    private bool isUpW = true;
+
+    private bool isDownS = false;
+    private bool isUpS = true;
 
     private int curButton = 0;
 
@@ -23,21 +26,39 @@ public class MenuStuff : MonoBehaviour {
 
     //keyboard input
     void keyboardInput() {
+        //W input
         if (Input.GetKeyUp(KeyCode.W))
         {
-            isUp = true;
+            isUpW = true;
+            isDownW = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.W) && isUpW == true) {
+            isDownW = true;
+            isUpW = false;
             curButton++;
-            if (curButton > buttons.Length) {
-                curButton = buttons.Length;
+            if (curButton < 0)
+            {
+                curButton = 1;
             }
-            Debug.Log(curButton);
         }
-        else if (Input.GetKeyDown(KeyCode.W) && isUp == true) {
-            isDown = true;
+        //S input
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            isUpS = true;
+            isDownS = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.Return)) {
-            Debug.Log("I am here");
+        else if (Input.GetKeyDown(KeyCode.S) && isUpS == true)
+        {
+            isDownS = true;
+            isUpS = false;
+            curButton++;
+            if (curButton > 1)
+            {
+                curButton = 0;
+            }
+        }
+        Debug.Log(curButton);
+        if (Input.GetKeyDown(KeyCode.Return) && curButton == 0) {
             SceneManager.LoadScene("Area 1", LoadSceneMode.Single);
         }
     }
