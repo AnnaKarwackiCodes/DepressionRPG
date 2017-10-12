@@ -6,6 +6,8 @@ public class NPC : MonoBehaviour {
     public string Name;
     public Sprite look;
     public string[] Dialogue;
+	public GameObject textbox;
+	public GameObject play;
     private int dialogueSize;
 
 	// Use this for initialization
@@ -16,5 +18,11 @@ public class NPC : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	//if the player is within a distance of NPC show dialogue
+	void WithinRange(){
+		
+
 	}
 }
