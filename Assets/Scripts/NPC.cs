@@ -8,9 +8,16 @@ public class NPC : MonoBehaviour {
     public Sprite look;
     public string[] Dialogue;
 	public GameObject textbox;
+	public GameObject can;
 	public GameObject play;
     private int dialogueSize;
     private bool isCreated = false;
+	private GameObject tb;
+
+	//text stuff
+	private int curFrame = 0;
+	private bool isUp = true;
+	private bool isDown = false;
 
 	// Use this for initialization
 	void Start () {
@@ -31,23 +38,38 @@ public class NPC : MonoBehaviour {
 
         if (distance < 3)
         {
-            //textbox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -129, 0);
             if (isCreated == false) {
-                Instantiate(textbox, new Vector3(0, -129, 0), new Quaternion(0, 0, 0, 0));
+				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);
                 isCreated = true;
             }
-            textbox.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
+            tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
+			displayText ();
         }
         else {
-            //textbox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -400, 0);
             if (isCreated) {
-                DestroyImmediate(textbox, true);
+                Destroy(tb, 0);
                 isCreated = false;
             }
         }
     }
 
     void displayText() {
+		if (Input.GetKeyUp (KeyCode.Return)) {
+			isUp = true;
+			isDown = false;
+		} 
+		else if (Input.GetKeyDown (KeyCode.Return) && isUp) {
+			isDown = true;
+			isUp = false;
+			curFrame++;
+			play.GetComponent<Player>().CanMove = false; 
+		}
 
+		if (curFrame > dialogueSize - 1) {
+			curFrame = 0;
+			play.GetComponent<Player>().CanMove = true;
+		}
+		tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [curFrame];
+		Debug.Log (Dialogue [curFrame]);
     }
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     private float playerSpeed;
     private int damnage;
     private bool isColliding;
+	protected bool canMove = true;
 
     // Use this for initialization
     void Start () {
@@ -22,53 +23,55 @@ public class Player : MonoBehaviour {
 	}
 
     void Movement() {
-        //moving up
-        if (Input.GetKey(KeyCode.W)) {
-            if (isColliding == false)
-            {
-                play.transform.Translate(Vector2.up * playerSpeed * Time.deltaTime);
-            }
-            else {
-                play.transform.Translate(-Vector2.up * playerSpeed * Time.deltaTime);
-            }
-            
-        }
-        //moving down
-        else if (Input.GetKey(KeyCode.S))
-        {
-            if (isColliding == false)
-            {
-                play.transform.Translate(Vector2.down * playerSpeed * Time.deltaTime);
-            }
-            else
-            {
-                play.transform.Translate(-Vector2.down * playerSpeed * Time.deltaTime);
-            }
-        }
-        //moving left
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (isColliding == false)
-            {
-                play.transform.Translate(Vector2.left * playerSpeed * Time.deltaTime);
-            }
-            else
-            {
-                play.transform.Translate(-Vector2.left * playerSpeed * Time.deltaTime);
-            }
-        }
-        //moving right
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (isColliding == false)
-            {
-                play.transform.Translate(Vector2.right * playerSpeed * Time.deltaTime);
-            }
-            else
-            {
-                play.transform.Translate(-Vector2.right * playerSpeed * Time.deltaTime);
-            }
-        }
+		if (canMove) {
+			//moving up
+			if (Input.GetKey(KeyCode.W)) {
+				if (isColliding == false)
+				{
+					play.transform.Translate(Vector2.up * playerSpeed * Time.deltaTime);
+				}
+				else {
+					play.transform.Translate(-Vector2.up * playerSpeed * Time.deltaTime);
+				}
+
+			}
+			//moving down
+			else if (Input.GetKey(KeyCode.S))
+			{
+				if (isColliding == false)
+				{
+					play.transform.Translate(Vector2.down * playerSpeed * Time.deltaTime);
+				}
+				else
+				{
+					play.transform.Translate(-Vector2.down * playerSpeed * Time.deltaTime);
+				}
+			}
+			//moving left
+			if (Input.GetKey(KeyCode.A))
+			{
+				if (isColliding == false)
+				{
+					play.transform.Translate(Vector2.left * playerSpeed * Time.deltaTime);
+				}
+				else
+				{
+					play.transform.Translate(-Vector2.left * playerSpeed * Time.deltaTime);
+				}
+			}
+			//moving right
+			if (Input.GetKey(KeyCode.D))
+			{
+				if (isColliding == false)
+				{
+					play.transform.Translate(Vector2.right * playerSpeed * Time.deltaTime);
+				}
+				else
+				{
+					play.transform.Translate(-Vector2.right * playerSpeed * Time.deltaTime);
+				}
+			}
+		}
     }
 
     //collison stuff!
@@ -84,4 +87,14 @@ public class Player : MonoBehaviour {
     {
         isColliding = false;
     }
+
+	//get set
+	public bool CanMove{
+		get{ 
+			return canMove;
+		}
+		set{ 
+			this.canMove = value;
+		}
+	}
 }
