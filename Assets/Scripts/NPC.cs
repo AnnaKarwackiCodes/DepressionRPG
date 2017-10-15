@@ -43,6 +43,8 @@ public class NPC : MonoBehaviour {
                 isCreated = true;
             }
             tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
+            tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
+            tb.transform.GetChild(2).GetComponent<Text>().text = name;
 			displayText ();
         }
         else {
@@ -70,6 +72,5 @@ public class NPC : MonoBehaviour {
 			play.GetComponent<Player>().CanMove = true;
 		}
 		tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [curFrame];
-		Debug.Log (Dialogue [curFrame]);
     }
 }
