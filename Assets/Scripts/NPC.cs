@@ -23,7 +23,6 @@ public class NPC : MonoBehaviour {
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = look;
         dialogueSize = Dialogue.Length;
-        Debug.Log(dialogueSize);
     }
 	
 	// Update is called once per frame
