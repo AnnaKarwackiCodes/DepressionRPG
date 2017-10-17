@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour {
     private int dialogueSize;
     private bool isCreated = false;
 	private GameObject tb;
+    private string[] garbage;
 
 	//text stuff
 	private int curFrame = 0;
@@ -23,6 +24,7 @@ public class NPC : MonoBehaviour {
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = look;
         dialogueSize = Dialogue.Length;
+        
     }
 	
 	// Update is called once per frame
@@ -41,9 +43,17 @@ public class NPC : MonoBehaviour {
 				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);
                 isCreated = true;
             }
-            tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
             tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
-            tb.transform.GetChild(2).GetComponent<Text>().text = name;
+            if (GlobalStuff.Aniexty == true)
+            {
+                //gibberish
+                tb.transform.GetChild(0).GetComponent<Text>().text = "sdasheabfdcb";
+                tb.transform.GetChild(2).GetComponent<Text>().text = "adnlsak";
+            }
+            else {
+                tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
+                tb.transform.GetChild(2).GetComponent<Text>().text = Name;
+            }
 			displayText ();
         }
         else {
@@ -69,7 +79,15 @@ public class NPC : MonoBehaviour {
 		if (curFrame > dialogueSize - 1) {
 			curFrame = 0;
 			play.GetComponent<Player>().CanMove = true;
+            GlobalStuff.AnxTalk++;
 		}
-		tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [curFrame];
+        if (GlobalStuff.Aniexty == true)
+        {
+            //gibberish
+            tb.transform.GetChild(0).GetComponent<Text>().text = "sdasheabfdcb";
+        }
+        else {
+            tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[curFrame];
+        }
     }
 }

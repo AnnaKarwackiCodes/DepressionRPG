@@ -7,6 +7,8 @@ public static class GlobalStuff {
     private static bool wasInBattle;
     private static bool[] baddiesAlive;
     private static int curFight;
+    private static bool aniexty;
+    private static int anxTalk;
 
     public static Vector3 PrevPos {
         get {
@@ -32,6 +34,24 @@ public static class GlobalStuff {
         }
         set {
             curFight = value;
+        }
+    }
+
+    public static bool Aniexty {
+        get {
+            return aniexty;
+        }
+        set {
+            aniexty = value;
+        }
+    }
+
+    public static int AnxTalk {
+        get {
+            return anxTalk;
+        }
+        set {
+            anxTalk = value;
         }
     }
 

@@ -20,6 +20,8 @@ public class MenuStuff : MonoBehaviour {
         //setting up the global shit
         GlobalStuff.setBaddieOne(3);
         GlobalStuff.WasInBattle = false;
+        GlobalStuff.Aniexty = true;
+        GlobalStuff.AnxTalk = 0;
 	}
 	
 	// Update is called once per frame
