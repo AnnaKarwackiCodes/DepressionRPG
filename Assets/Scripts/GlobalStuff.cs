@@ -52,6 +52,7 @@ public static class GlobalStuff {
         }
         set {
             anxTalk = value;
+			Debug.Log (anxTalk);
         }
     }
 

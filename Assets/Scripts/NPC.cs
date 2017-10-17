@@ -42,6 +42,7 @@ public class NPC : MonoBehaviour {
             if (isCreated == false) {
 				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);
                 isCreated = true;
+				GlobalStuff.AnxTalk++;
             }
             tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
             if (GlobalStuff.Aniexty == true)
