@@ -19,6 +19,7 @@ public class NPC : MonoBehaviour {
 	private int curFrame = 0;
 	private bool isUp = true;
 	private bool isDown = false;
+    private bool interacted = false;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +43,11 @@ public class NPC : MonoBehaviour {
             if (isCreated == false) {
 				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);
                 isCreated = true;
-				GlobalStuff.AnxTalk++;
+                if (interacted == false) {
+                    GlobalStuff.AnxTalk++;
+                    interacted = true;
+                }
+                play.GetComponent<Player>().InInteraction = true;
             }
             tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
             if (GlobalStuff.Aniexty == true)
@@ -61,26 +66,31 @@ public class NPC : MonoBehaviour {
             if (isCreated) {
                 Destroy(tb, 0);
                 isCreated = false;
+                play.GetComponent<Player>().InInteraction = false;
             }
+            
         }
     }
 
     void displayText() {
-		if (Input.GetKeyUp (KeyCode.Return)) {
-			isUp = true;
-			isDown = false;
-		} 
-		else if (Input.GetKeyDown (KeyCode.Return) && isUp) {
-			isDown = true;
-			isUp = false;
-			curFrame++;
-			play.GetComponent<Player>().CanMove = false; 
-		}
+        if (!GlobalStuff.Aniexty) {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                isUp = true;
+                isDown = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && isUp)
+            {
+                isDown = true;
+                isUp = false;
+                curFrame++;
+                play.GetComponent<Player>().CanMove = false;
+            }
+        }
 
 		if (curFrame > dialogueSize - 1) {
 			curFrame = 0;
 			play.GetComponent<Player>().CanMove = true;
-            GlobalStuff.AnxTalk++;
 		}
         if (GlobalStuff.Aniexty == true)
         {

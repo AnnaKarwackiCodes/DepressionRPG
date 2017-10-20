@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour {
     public GameObject[] baddies;
 	public bool forTesting;
 	public GameObject HelpfulKnight;
+    public string RoomName;
 	private GameObject hk;
 	private bool spawn = false;
 	// Use this for initialization
 	void Start () {
-		GlobalStuff.Aniexty = forTesting;
+		//GlobalStuff.Aniexty = forTesting;
         if (GlobalStuff.WasInBattle)
         {
             Respawn();
@@ -22,19 +23,26 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GlobalStuff.Aniexty = forTesting;
-		if (GlobalStuff.Aniexty == true) {
-			Debug.Log ("dfhadksjfbldkhafbdlskahfblsadkfblsdkfjhbsdlkfjbdsklafbjjdlskafb");
-			if (GlobalStuff.AnxTalk >= 3) {
-				Debug.Log ("here i am");
-				//summon other knight
-				spawnKnight ();
-				//set anxtalk to weird number
-				GlobalStuff.AnxTalk = -1;
-				//set aniexty to false
-				GlobalStuff.Aniexty = false;
-			}
-		}
+        if (RoomName == "Area 1") {
+            //GlobalStuff.Aniexty = forTesting;
+            if (GlobalStuff.Aniexty == true)
+            {
+                if (GlobalStuff.AnxTalk >= 3 && !player.GetComponent<Player>().InInteraction)
+                {
+                    Debug.Log("here i am");
+                    player.GetComponent<Player>().CanMove = false;
+                    //summon other knight
+                    spawnKnight();
+                    //set anxtalk to weird number
+                    GlobalStuff.AnxTalk = -1;
+                    //set aniexty to false
+                    //GlobalStuff.Aniexty = false;
+                }
+            }
+        }
+        else if (RoomName == "Area 2") {
+
+        }
 	}
 
     //respawn into proper place 

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MenuStuff : MonoBehaviour {
     public GameObject[] buttons;
+    public GameObject Title;
+    public GameObject controls;
+    public GameObject can;
 
     private bool isDownW = false;
     private bool isUpW = true;
@@ -15,6 +18,9 @@ public class MenuStuff : MonoBehaviour {
 
     private int curButton = 0;
 
+    private bool created = false;
+    private GameObject con;
+    private bool control = false;
 	// Use this for initialization
 	void Start () {
         //setting up the global shit
@@ -73,9 +79,28 @@ public class MenuStuff : MonoBehaviour {
                 curButton = 0;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Return) && curButton == 0) {
+        if ((Input.GetKeyDown(KeyCode.E)||Input.GetKeyDown(KeyCode.Return)) && curButton == 0 && !control) {
+            //SceneManager.LoadScene("Area 1", LoadSceneMode.Single);
+            viewControls();
+        }
+        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)){
             SceneManager.LoadScene("Area 1", LoadSceneMode.Single);
         }
     }
 
+    void viewControls()
+    {
+        control = true;
+        Title.SetActive(false);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(false);
+        }
+
+        if (!created)
+        {
+            con = Instantiate(controls, can.transform);
+            created = true;
+        }
+    }
 }

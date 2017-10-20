@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     public GameObject play;
     private float playerSpeed;
     private int damnage;
-    private bool isColliding;
+    private bool inInteraction;
 	protected bool canMove = true;
     private char CollisionKey;
     private char lastKey;
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start () {
         playerSpeed = 3;
-        isColliding = false;
+        inInteraction = false;
 	}
 	
 	// Update is called once per frame
@@ -69,8 +69,8 @@ public class Player : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC")
         {
-            isColliding = true;
             CollisionKey = lastKey;
+            Debug.Log("hit");
         }
         else {
             Debug.Log("Collision");
@@ -78,7 +78,6 @@ public class Player : MonoBehaviour {
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        isColliding = false;
         CollisionKey = ' ';
     }
 
@@ -91,4 +90,14 @@ public class Player : MonoBehaviour {
 			this.canMove = value;
 		}
 	}
+
+    public bool InInteraction {
+        get {
+            return inInteraction;
+        }
+        set
+        {
+            inInteraction = value;
+        }
+    }
 }
