@@ -10,6 +10,10 @@ public class NPC : MonoBehaviour {
 	public GameObject textbox;
 	public GameObject can;
 	public GameObject play;
+
+    public bool hasQuest;
+    public string whatQuest;
+
     private int dialogueSize;
     private bool isCreated = false;
 	private GameObject tb;

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//GlobalStuff.Aniexty = forTesting;
-        if (GlobalStuff.WasInBattle)
+        if (GlobalStuff.WasInBattle && RoomName == "Area 1")
         {
             Respawn();
             GlobalStuff.WasInBattle = false;
@@ -29,16 +29,30 @@ public class GameManager : MonoBehaviour {
             {
                 if (GlobalStuff.AnxTalk >= 3 && !player.GetComponent<Player>().InInteraction)
                 {
-                    Debug.Log("here i am");
                     player.GetComponent<Player>().CanMove = false;
                     //summon other knight
                     spawnKnight();
                     //set anxtalk to weird number
                     GlobalStuff.AnxTalk = -1;
-                    //set aniexty to false
-                    //GlobalStuff.Aniexty = false;
                 }
             }
+            if (GlobalStuff.KindFinished)
+            {
+                GameObject temp = GameObject.FindGameObjectWithTag("Kind Knight");
+                if ( temp != null)
+                {
+                    float distance = Mathf.Pow(player.transform.localPosition.x - hk.transform.localPosition.x, 2) + Mathf.Pow(player.transform.localPosition.y - hk.transform.localPosition.y, 2);
+                    distance = Mathf.Sqrt(distance);
+
+                    Debug.Log(distance);
+
+                    if (distance > 9)
+                    {
+                        Destroy(hk, 0);
+                    }
+                }
+            }
+            
         }
         else if (RoomName == "Area 2") {
 

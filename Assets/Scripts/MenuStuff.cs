@@ -28,6 +28,9 @@ public class MenuStuff : MonoBehaviour {
         GlobalStuff.WasInBattle = false;
         GlobalStuff.Aniexty = true;
         GlobalStuff.AnxTalk = 0;
+        GlobalStuff.KindFinished = false;
+
+        Cursor.visible = false;
 	}
 	
 	// Update is called once per frame

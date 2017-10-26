@@ -29,6 +29,7 @@ public class HelpfulKnight : MonoBehaviour {
     private bool finished = false;
     private float time = 2f;
     private float time2 = 3f;
+    private bool interact = false;
 
 	private 
     // Use this for initialization
@@ -42,10 +43,10 @@ public class HelpfulKnight : MonoBehaviour {
 
         if (gm.GetComponent<GameManager>().RoomName == "Area 2")
         {
+            curFrame = 0;
             whichDialogue = 1;
             dialogueSize = Dialogue2.Length;
-            Debug.Log("fuckers" + dialogueSize);    
-            play.GetComponent<Player>().CanMove = false;
+            
         }
     }
 	
@@ -53,15 +54,25 @@ public class HelpfulKnight : MonoBehaviour {
 	void Update () {
         if (gm.GetComponent<GameManager>().RoomName == "Area 1")
         {
-            moveCharacter();
+            if (GlobalStuff.KindFinished == false)
+            {
+                moveCharacter();    
+            }
+            else if (GlobalStuff.KindFinished)
+            {
+                Debug.Log("i want to kill myself");
+                moveOff();
+            }
         }
-        else if (gm.GetComponent<GameManager>().RoomName == "Area 2") {
-            MoveWithPlayer();
+        else if(gm.GetComponent<GameManager>().RoomName == "Area 2")
+        {
+            atFarm();
         }
 	}
     //show the text
     void displayText()
     {
+        
         if (Input.GetKeyUp(KeyCode.E))
         {
             isUp = true;
@@ -72,19 +83,19 @@ public class HelpfulKnight : MonoBehaviour {
             isDown = true;
             isUp = false;
             curFrame++;
+            Debug.Log(curFrame);
         }
         
         if (curFrame >= dialogueSize)
         {
             if (isCreated)
             {
-                Debug.Log("i want to die " + dialogueSize);
                 Destroy(tb, 0);
                 isCreated = false;
-                finished = true;
+                //finished = true;
+                GlobalStuff.KindFinished = true;
+                play.GetComponent<Player>().CanMove = true;
                 curFrame = 0;
-                whichDialogue++;
-                time = 2f;
             }
         }
 
@@ -99,7 +110,7 @@ public class HelpfulKnight : MonoBehaviour {
 
 		} else {
 			transform.Translate ((Vector2.left * 0 * Time.deltaTime));
-            if (!finished) {
+            if (!GlobalStuff.KindFinished) {
                 if (isCreated == false)
                 {
                     tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 6f), new Quaternion(0, 0, 0, 0), can.transform);
@@ -111,67 +122,54 @@ public class HelpfulKnight : MonoBehaviour {
                 displayText();
             }
         }
-
-        if (finished) {
-            transform.Translate((Vector2.right * 3 * Time.deltaTime));
-            play.transform.Translate((Vector2.right * 3 * Time.deltaTime));
-            time -= Time.deltaTime;
-            if (time <= 0) {
-                SceneManager.LoadScene("Area 2", LoadSceneMode.Single);
-            }
-        }
 	}
 
-    void MoveWithPlayer() {
-        time -= Time.deltaTime;
-        if(whichDialogue < 4)
-        {
-            if (time >= 0)
-            {
-                transform.Translate((Vector2.right * 3 * Time.deltaTime));
-                play.transform.Translate((Vector2.right * 3 * Time.deltaTime));
-            }
-            else if ((time <= 0))
-            {
-                if (!isCreated)
-                {
-                    tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 6f), new Quaternion(0, 0, 0, 0), can.transform);
-                    isCreated = true;
-                }
-                tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
-                tb.transform.GetChild(2).GetComponent<Text>().text = Name;
-                if (whichDialogue == 1)
-                {
-                    tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue2[curFrame];
+    void atFarm()
+    {
+        float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
+        distance = Mathf.Sqrt(distance);
 
-                }
-                else if (whichDialogue == 2)
-                {
-                    dialogueSize = Dialogue3.Length;
-                    tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue3[curFrame];
-                }
-                else if (whichDialogue == 3)
-                {
-                    dialogueSize = Dialogue4.Length;
-                    tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue4[curFrame];
-                }
-                displayText();
+        if (distance < 3)
+        {
+            if (isCreated == false)
+            {
+                tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 6f), new Quaternion(0, 0, 0, 0), can.transform);
+                isCreated = true;
+                play.GetComponent<Player>().InInteraction = true;
             }
+            tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
+            tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue2[curFrame];
+            tb.transform.GetChild(2).GetComponent<Text>().text = Name;
+            displayText();
         }
         else
         {
-            time2 -= Time.deltaTime;
-            if(time2 > 0)
+            if (isCreated)
             {
-                transform.Translate((Vector2.right * 3 * Time.deltaTime));
-            }
-            else
-            {
-                transform.Translate((Vector2.right * 3 * Time.deltaTime));
-                play.GetComponent<Player>().CanMove = true;
+                Destroy(tb, 0);
+                isCreated = false;
+                play.GetComponent<Player>().InInteraction = false;
+                curFrame = 0;
                 GlobalStuff.Aniexty = false;
             }
-        }
 
+        }
+    }
+
+    void moveOff()
+    {
+        transform.Translate((Vector2.right * 3 * Time.deltaTime));
+    } 
+
+    public bool Finished
+    {
+        get
+        {
+            return finished;
+        }
+        set
+        {
+            finished = value;
+        }
     }
 }

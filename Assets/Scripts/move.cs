@@ -10,13 +10,14 @@ public class move : MonoBehaviour {
     public GameObject textbox;
     public GameObject play;
     public GameObject can;
-
+    public GameObject gameManager;
+    private GameObject gm;
     private bool created = false;
     private GameObject tb;
 
     // Use this for initialization
     void Start() {
-
+        gm = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -50,6 +51,11 @@ public class move : MonoBehaviour {
     void moveToRoom() {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (gm.GetComponent<GameManager>().RoomName == "Area 1")
+            {
+                GlobalStuff.PrevPos = play.transform.position;
+                GlobalStuff.WasInBattle = true;
+            }
             SceneManager.LoadScene(location, LoadSceneMode.Single);
         }
     }

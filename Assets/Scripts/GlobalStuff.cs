@@ -9,6 +9,8 @@ public static class GlobalStuff {
     private static int curFight;
     private static bool aniexty;
     private static int anxTalk;
+    private static bool kindFinished;
+    private static bool overThinkingStart;
 
     public static Vector3 PrevPos {
         get {
@@ -53,6 +55,30 @@ public static class GlobalStuff {
         set {
             anxTalk = value;
 			Debug.Log (anxTalk);
+        }
+    }
+
+    public static bool KindFinished
+    {
+        set
+        {
+            kindFinished = value;
+        }
+        get
+        {
+            return kindFinished;
+        }
+    }
+
+    public static bool OverThinkingStart
+    {
+        set
+        {
+            overThinkingStart = value;
+        }
+        get
+        {
+            return overThinkingStart;
         }
     }
 
