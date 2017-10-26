@@ -11,6 +11,10 @@ public static class GlobalStuff {
     private static int anxTalk;
     private static bool kindFinished;
     private static bool overThinkingStart;
+	private static bool wizFinished;
+	private static bool talkToWiz;
+	private static bool useSpell;
+	private static bool haveQuestItem;
 
     public static Vector3 PrevPos {
         get {
@@ -70,7 +74,43 @@ public static class GlobalStuff {
         }
     }
 
-    public static bool OverThinkingStart
+	public static bool WizFinished
+	{
+		set
+		{
+			wizFinished = value;
+		}
+		get
+		{
+			return wizFinished;
+		}
+	}
+
+	public static bool TalkToWiz
+	{
+		set
+		{
+			talkToWiz = value;
+		}
+		get
+		{
+			return talkToWiz;
+		}
+	}
+
+	public static bool UseSpell
+	{
+		set
+		{
+			useSpell = value;
+		}
+		get
+		{
+			return useSpell;
+		}
+	}
+
+    public static bool OverthinkingStart
     {
         set
         {
@@ -81,6 +121,18 @@ public static class GlobalStuff {
             return overThinkingStart;
         }
     }
+
+	public static bool HaveQuestItem
+	{
+		set
+		{
+			haveQuestItem = value;
+		}
+		get
+		{
+			return haveQuestItem;
+		}
+	}
 
     public static void setBaddieOne(int length) {
         baddiesAlive = new bool[length];

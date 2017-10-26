@@ -8,10 +8,14 @@ public class GameManager : MonoBehaviour {
     public GameObject[] baddies;
 	public bool forTesting;
 	public GameObject HelpfulKnight;
+	public GameObject Wizard;
     public string RoomName;
 	public GameObject can;
 	private GameObject hk;
+	private GameObject wiz;
 	private bool spawn = false;
+
+	public GameObject magic;
 
 	private GameObject tb;
 	private int numToSpawn;
@@ -19,6 +23,8 @@ public class GameManager : MonoBehaviour {
 	private GameObject[] boxes;
 	private float time;
 	private bool trigger;
+	private GameObject mg;
+	private bool iconCreate;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour {
 			time = .5f;
 			trigger = false;
 		}
+		iconCreate = false;
     }
 	
 	// Update is called once per frame
@@ -64,23 +71,38 @@ public class GameManager : MonoBehaviour {
 				}
 			}
             
-		}
-		else if (RoomName == "Area 2") {
+		} else if (RoomName == "Area 2") {
 
-		}
-		else if (RoomName == "Area 3") {
-			if (trigger) {
+		} else if (RoomName == "Area 3") {
+			if (trigger || GlobalStuff.UseSpell) {
+				numToSpawn = 20;
 				spawnTextBoxes ();
 				time -= Time.deltaTime;
 			}
-			if (numOfSpawn == numToSpawn) {
+			if (numOfSpawn == numToSpawn && !GlobalStuff.UseSpell) {
 				DestroyBoxes (); // add delay later
-				player.transform.position = new Vector2(-12.9f,-.48f);
+				player.transform.position = new Vector2 (-12.9f, -.48f);
 				//spawn in wizard to talk
+				spawnWizard ();
+			}
+		} else if (RoomName == "Wizard house") {
+			if (GlobalStuff.TalkToWiz) {
+				if (spawn == false) {
+					wiz = Instantiate (Wizard, new Vector3 (player.transform.position.x - 6, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
+					spawn = true;
+				}
+				Debug.Log ("im tired");
+			}
+		}
+
+		if (GlobalStuff.UseSpell) {
+			if (!iconCreate) {
+				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), can.transform);
+				mg.transform.SetAsLastSibling ();
+				iconCreate = true;
 			}
 		}
 	}
-
     //respawn into proper place 
     private void Respawn() {
         player.transform.position = GlobalStuff.PrevPos;
@@ -106,9 +128,20 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private void DestroyBoxes(){
+	public void DestroyBoxes(){
 		for (int i = 0; i < numToSpawn; i++) {
 			Destroy (boxes [i], 0);
+		}
+		numOfSpawn = 0;
+		trigger = false;
+	}
+
+	private void spawnWizard(){
+		if (spawn == false) {
+			wiz = Instantiate (Wizard, new Vector3 (player.transform.position.x - 15, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
+			spawn = true;
+			numOfSpawn = 0;
+			player.GetComponent<Player>().CanMove = false;
 		}
 	}
 

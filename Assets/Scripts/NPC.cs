@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour {
     public string Name;
@@ -42,35 +43,63 @@ public class NPC : MonoBehaviour {
         float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
         distance = Mathf.Sqrt(distance);
 
-        if (distance < 3)
-        {
-            if (isCreated == false) {
-				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);
-                isCreated = true;
-                if (interacted == false) {
-                    GlobalStuff.AnxTalk++;
-                    interacted = true;
-                }
-                play.GetComponent<Player>().InInteraction = true;
-            }
-            tb.transform.GetChild(1).GetComponent<Image>().sprite = look;
-            if (GlobalStuff.Aniexty == true)
-            {
-                //gibberish
-                tb.transform.GetChild(0).GetComponent<Text>().text = "sdasheabfdcb";
-                tb.transform.GetChild(2).GetComponent<Text>().text = "adnlsak";
-            }
-            else {
-                tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
-                tb.transform.GetChild(2).GetComponent<Text>().text = Name;
-            }
+		if (distance < 3 &&(!hasQuest || !GlobalStuff.HaveQuestItem)) {
+			if (isCreated == false) {
+				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
+				isCreated = true;
+				if (interacted == false) {
+					GlobalStuff.AnxTalk++;
+					interacted = true;
+				}
+				play.GetComponent<Player> ().InInteraction = true;
+			}
+			tb.transform.GetChild (1).GetComponent<Image> ().sprite = look;
+			if (GlobalStuff.Aniexty == true) {
+				//gibberish
+				tb.transform.GetChild (0).GetComponent<Text> ().text = "sdasheabfdcb";
+				tb.transform.GetChild (2).GetComponent<Text> ().text = "adnlsak";
+			} else {
+				tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [0];
+				tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
+			}
 			displayText ();
-        }
+		}
+		else if (distance < 3 && hasQuest && GlobalStuff.HaveQuestItem) {
+			if (isCreated == false) {
+				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
+				isCreated = true;
+				if (interacted == false) {
+					GlobalStuff.AnxTalk++;
+					interacted = true;
+				}
+				play.GetComponent<Player> ().InInteraction = true;
+			}
+			tb.transform.GetChild (1).GetComponent<Image> ().sprite = look;
+			tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
+			Debug.Log ("for the love of god");
+			if (hasQuest) {
+				switch (whatQuest) {
+				case "Overthinking":
+					if (GlobalStuff.HaveQuestItem) {
+						tb.transform.GetChild (0).GetComponent<Text> ().text = "Thank you!!"; //temp
+					}
+					break;
+				}
+			}
+		}
         else {
             if (isCreated) {
                 Destroy(tb, 0);
                 isCreated = false;
                 play.GetComponent<Player>().InInteraction = false;
+
+				switch (whatQuest) {
+				case "Overthinking":
+					if (GlobalStuff.HaveQuestItem) {
+						SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+					}
+					break;
+				}
             }
             
         }
@@ -95,6 +124,13 @@ public class NPC : MonoBehaviour {
 		if (curFrame > dialogueSize - 1) {
 			curFrame = 0;
 			play.GetComponent<Player>().CanMove = true;
+			if (hasQuest) {
+				switch (whatQuest) {
+				case "Overthinking":
+					GlobalStuff.OverthinkingStart = true;
+					break;
+				}
+			}
 		}
         if (GlobalStuff.Aniexty == true)
         {

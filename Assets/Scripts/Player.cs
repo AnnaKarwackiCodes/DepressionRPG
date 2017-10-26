@@ -80,6 +80,10 @@ public class Player : MonoBehaviour {
 		else if (collision.gameObject.tag == "ot pre") {
 			//collision.GetComponent<Overthinking> ().spawnOne ();
 		}
+		else if(collision.gameObject.tag == "dog"){
+			Debug.Log ("Found Dog");
+			GlobalStuff.HaveQuestItem = true;
+		}
         else {
             Debug.Log("Collision");
         }

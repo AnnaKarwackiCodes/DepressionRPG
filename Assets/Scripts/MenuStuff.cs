@@ -29,7 +29,9 @@ public class MenuStuff : MonoBehaviour {
         GlobalStuff.Aniexty = true;
         GlobalStuff.AnxTalk = 0;
         GlobalStuff.KindFinished = false;
-
+		GlobalStuff.WizFinished = false;
+		GlobalStuff.TalkToWiz = false;
+		GlobalStuff.UseSpell = false;
         Cursor.visible = false;
 	}
 	
