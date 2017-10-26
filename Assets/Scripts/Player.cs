@@ -12,11 +12,13 @@ public class Player : MonoBehaviour {
 	protected bool canMove = true;
     private char CollisionKey;
     private char lastKey;
+	private GameObject gm;
 
     // Use this for initialization
     void Start () {
         playerSpeed = 3;
         inInteraction = false;
+		gm = GameObject.Find ("GameManager");
 	}
 	
 	// Update is called once per frame
@@ -67,11 +69,17 @@ public class Player : MonoBehaviour {
     //collison stuff!
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC")
-        {
-            CollisionKey = lastKey;
-            Debug.Log("hit");
-        }
+		if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC") {
+			CollisionKey = lastKey;
+			Debug.Log ("hit");
+		} 
+		else if (collision.gameObject.tag == "Overthinking") {
+			gm.GetComponent<GameManager> ().NumToSpawn = 20;
+			gm.GetComponent<GameManager> ().Trigger = true;
+		}
+		else if (collision.gameObject.tag == "ot pre") {
+			//collision.GetComponent<Overthinking> ().spawnOne ();
+		}
         else {
             Debug.Log("Collision");
         }
