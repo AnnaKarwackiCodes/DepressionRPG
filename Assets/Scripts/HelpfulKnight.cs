@@ -84,6 +84,7 @@ public class HelpfulKnight : MonoBehaviour {
             isUp = false;
             curFrame++;
             Debug.Log(curFrame);
+            play.GetComponent<Player>().CanMove = false;
         }
         
         if (curFrame >= dialogueSize)

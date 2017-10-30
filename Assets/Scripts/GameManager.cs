@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public GameObject textbox;
@@ -121,7 +122,8 @@ public class GameManager : MonoBehaviour {
 		if (numOfSpawn < numToSpawn && time <= 0) {
 			Debug.Log ("I am here");
 			tb = Instantiate(textbox, new Vector2(Random.Range((20), (Screen.width-20)), Random.Range((20), (Screen.height-20))), new Quaternion(0, 0, 0, 0), can.transform);
-			boxes [numOfSpawn] = tb;
+            tb.transform.GetChild(0).GetComponent<Text>().text = "What if I mess up?";
+            boxes [numOfSpawn] = tb;
 			Debug.Log(numOfSpawn);
 			numOfSpawn++;
 			time = .5f;
