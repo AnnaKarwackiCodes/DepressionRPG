@@ -82,6 +82,7 @@ public class Player : MonoBehaviour {
 		}
 		else if(collision.gameObject.tag == "dog"){
 			Debug.Log ("Found Dog");
+            collision.GetComponent<Dog>().Follow = true;
 			GlobalStuff.HaveQuestItem = true;
 		}
         else {

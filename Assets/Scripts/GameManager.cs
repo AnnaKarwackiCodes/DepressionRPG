@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject Wizard;
     public string RoomName;
 	public GameObject can;
+    public string[] negthoughts;
+    public GameObject dog;
+
 	private GameObject hk;
 	private GameObject wiz;
 	private bool spawn = false;
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour {
 	private bool trigger;
 	private GameObject mg;
 	private bool iconCreate;
+    private int spawnNum;
+    private GameObject doggo;
 
 	// Use this for initialization
 	void Start () {
@@ -34,14 +39,47 @@ public class GameManager : MonoBehaviour {
         {
             Respawn();
             GlobalStuff.WasInBattle = false;
+
+        }
+        else if(RoomName =="Area 1")
+        {
+            if (GlobalStuff.HaveQuestItem)
+            {
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y + 1, 0), new Quaternion(0, 0, 0, 0));
+            }
+        }
+        if(RoomName == "Area 2")
+        {
+            if (GlobalStuff.HaveQuestItem)
+            {
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo.GetComponent<Dog>().Follow = true;
+            }
         }
 		if (RoomName == "Area 3") {
-			boxes = new GameObject[20];	
+			boxes = new GameObject[40];	
 			numToSpawn = 5;
 			numOfSpawn = 0;
-			time = .5f;
+			time = 1.5f;
 			trigger = false;
+            spawnNum = 1;
 		}
+        if(RoomName == "Crossroads")
+        {
+            if (GlobalStuff.HaveQuestItem)
+            {
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo.GetComponent<Dog>().Follow = true;
+            }
+        }
+        if(RoomName =="Wizard house")
+        {
+            if (GlobalStuff.HaveQuestItem)
+            {
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo.GetComponent<Dog>().Follow = true;
+            }
+        }
 		iconCreate = false;
     }
 	
@@ -73,6 +111,7 @@ public class GameManager : MonoBehaviour {
 			}
             
 		} else if (RoomName == "Area 2") {
+            
 
 		} else if (RoomName == "Area 3") {
 			if (trigger || GlobalStuff.UseSpell) {
@@ -80,7 +119,7 @@ public class GameManager : MonoBehaviour {
 				spawnTextBoxes ();
 				time -= Time.deltaTime;
 			}
-			if (numOfSpawn == numToSpawn && !GlobalStuff.UseSpell) {
+			if (numOfSpawn >= numToSpawn && !GlobalStuff.UseSpell) {
 				DestroyBoxes (); // add delay later
 				player.transform.position = new Vector2 (-12.9f, -.48f);
 				//spawn in wizard to talk
@@ -119,22 +158,30 @@ public class GameManager : MonoBehaviour {
     }
 
 	private void spawnTextBoxes(){
-		if (numOfSpawn < numToSpawn && time <= 0) {
-			Debug.Log ("I am here");
-			tb = Instantiate(textbox, new Vector2(Random.Range((20), (Screen.width-20)), Random.Range((20), (Screen.height-20))), new Quaternion(0, 0, 0, 0), can.transform);
-            tb.transform.GetChild(0).GetComponent<Text>().text = "What if I mess up?";
-            boxes [numOfSpawn] = tb;
-			Debug.Log(numOfSpawn);
-			numOfSpawn++;
-			time = .5f;
-		}
+        //if (numOfSpawn < numToSpawn && time <= 0) {
+        if (time <= 0)
+        {
+            for (int i = 0; i < spawnNum; i++)
+            {
+                Debug.Log("I am here");
+                tb = Instantiate(textbox, new Vector2(Random.Range((20), (Screen.width - 20)), Random.Range((20), (Screen.height - 20))), new Quaternion(0, 0, 0, 0), can.transform);
+                tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts[Random.Range(0, negthoughts.Length - 1)];
+                boxes[numOfSpawn] = tb;
+                Debug.Log(numOfSpawn);
+                numOfSpawn++;
+                
+            }
+            spawnNum++;
+            time = 1.5f;
+        }
 	}
 
 	public void DestroyBoxes(){
-		for (int i = 0; i < numToSpawn; i++) {
+		for (int i = 0; i < numOfSpawn; i++) {
 			Destroy (boxes [i], 0);
 		}
 		numOfSpawn = 0;
+        spawnNum = 1;
 		trigger = false;
 	}
 
