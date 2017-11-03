@@ -6,7 +6,7 @@ public class Dog : MonoBehaviour {
     private bool follow;
 	// Use this for initialization
 	void Start () {
-        follow = false;
+        //follow = false;
 	}
 	
 	// Update is called once per frame

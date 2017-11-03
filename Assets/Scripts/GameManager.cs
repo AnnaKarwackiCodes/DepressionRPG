@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour {
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y+1, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y - 3, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 3, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour {
 
 		if (GlobalStuff.UseSpell) {
 			if (!iconCreate) {
-				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), overlay.transform);
+				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), can.transform);
 				mg.transform.SetAsLastSibling ();
 				iconCreate = true;
 			}
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
                 tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts[Random.Range(0, negthoughts.Length - 1)];
                 boxes[numOfSpawn] = tb;
                 numOfSpawn++;
-                
+                tb.transform.SetAsFirstSibling();
             }
             spawnNum++;
             time = 1.5f;

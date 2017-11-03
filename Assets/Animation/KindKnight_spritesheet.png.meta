@@ -1,0 +1,574 @@
+fileFormatVersion: 2
+guid: 887f558b58e8d7a47b3ae773cda3ac5e
+timeCreated: 1509682299
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: KindKnight_spritesheet_0
+    21300002: KindKnight_spritesheet_1
+    21300004: KindKnight_spritesheet_2
+    21300006: KindKnight_spritesheet_3
+    21300008: KindKnight_spritesheet_4
+    21300010: KindKnight_spritesheet_5
+    21300012: KindKnight_spritesheet_6
+    21300014: KindKnight_spritesheet_7
+    21300016: KindKnight_spritesheet_8
+    21300018: KindKnight_spritesheet_9
+    21300020: KindKnight_spritesheet_10
+    21300022: KindKnight_spritesheet_11
+    21300024: KindKnight_spritesheet_12
+    21300026: KindKnight_spritesheet_13
+    21300028: KindKnight_spritesheet_14
+    21300030: KindKnight_spritesheet_15
+    21300032: KindKnight_spritesheet_16
+    21300034: KindKnight_spritesheet_17
+    21300036: KindKnight_spritesheet_18
+    21300038: KindKnight_spritesheet_19
+    21300040: KindKnight_spritesheet_20
+    21300042: KindKnight_spritesheet_21
+    21300044: KindKnight_spritesheet_22
+    21300046: KindKnight_spritesheet_23
+    21300048: KindKnight_spritesheet_24
+    21300050: KindKnight_spritesheet_25
+    21300052: KindKnight_spritesheet_26
+    21300054: KindKnight_spritesheet_27
+    21300056: KindKnight_spritesheet_28
+    21300058: KindKnight_spritesheet_29
+    21300060: KindKnight_spritesheet_30
+    21300062: KindKnight_spritesheet_31
+    21300064: KindKnight_spritesheet_32
+    21300066: KindKnight_spritesheet_33
+    21300068: KindKnight_spritesheet_34
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 280
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 280
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 280
+        width: 48
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 280
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 280
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 280
+        width: 38
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 280
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 210
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 210
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 210
+        width: 48
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 210
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 210
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 210
+        width: 38
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 210
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 140
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 140
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 140
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 140
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 140
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 140
+        width: 46
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 140
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 70
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 70
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 70
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 70
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 70
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 70
+        width: 46
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 70
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 0
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 0
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 0
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: KindKnight_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 0
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
