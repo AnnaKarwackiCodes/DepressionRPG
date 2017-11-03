@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject can;
     public string[] negthoughts;
     public GameObject dog;
+    public GameObject overlay;
 
 	private GameObject hk;
 	private GameObject wiz;
@@ -34,25 +35,28 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//GlobalStuff.Aniexty = forTesting;
-        if (GlobalStuff.WasInBattle && RoomName == "Area 1")
-        {
-            Respawn();
-            GlobalStuff.WasInBattle = false;
+        //GlobalStuff.Aniexty = forTesting;
 
-        }
-        else if(RoomName =="Area 1")
+        overlay.transform.position = new Vector3(overlay.transform.position.x, overlay.transform.position.y, -100);
+        if(RoomName =="Area 1")
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y + 1, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y+1, 0), new Quaternion(0, 0, 0, 0));
+                GlobalStuff.HaveQuestItem = true;
+                doggo.GetComponent<Dog>().Follow = true;
+            }
+            if(GlobalStuff.WasInBattle){
+                Respawn();
+                GlobalStuff.WasInBattle = false;
             }
         }
         if(RoomName == "Area 2")
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 3, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
         }
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour {
             if (GlobalStuff.HaveQuestItem)
             {
                 doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
         }
@@ -102,8 +107,6 @@ public class GameManager : MonoBehaviour {
 					float distance = Mathf.Pow (player.transform.localPosition.x - hk.transform.localPosition.x, 2) + Mathf.Pow (player.transform.localPosition.y - hk.transform.localPosition.y, 2);
 					distance = Mathf.Sqrt (distance);
 
-					Debug.Log (distance);
-
 					if (distance > 9) {
 						Destroy (hk, 0);
 					}
@@ -131,13 +134,12 @@ public class GameManager : MonoBehaviour {
 					wiz = Instantiate (Wizard, new Vector3 (player.transform.position.x - 6, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
 					spawn = true;
 				}
-				Debug.Log ("im tired");
 			}
 		}
 
 		if (GlobalStuff.UseSpell) {
 			if (!iconCreate) {
-				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), can.transform);
+				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), overlay.transform);
 				mg.transform.SetAsLastSibling ();
 				iconCreate = true;
 			}
@@ -150,7 +152,6 @@ public class GameManager : MonoBehaviour {
 
     private void spawnKnight() {
 		if (spawn == false) {
-			Debug.Log ("spawn");
 			hk = Instantiate (HelpfulKnight, new Vector3 (player.transform.position.x + 15, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
 			spawn = true;
 			//player.GetComponent<Player> ().CanMove = false;
@@ -163,11 +164,9 @@ public class GameManager : MonoBehaviour {
         {
             for (int i = 0; i < spawnNum; i++)
             {
-                Debug.Log("I am here");
                 tb = Instantiate(textbox, new Vector2(Random.Range((20), (Screen.width - 20)), Random.Range((20), (Screen.height - 20))), new Quaternion(0, 0, 0, 0), can.transform);
                 tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts[Random.Range(0, negthoughts.Length - 1)];
                 boxes[numOfSpawn] = tb;
-                Debug.Log(numOfSpawn);
                 numOfSpawn++;
                 
             }

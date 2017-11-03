@@ -39,23 +39,19 @@ public class Overthinking : MonoBehaviour {
 		float distance = Mathf.Pow (play.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow (play.transform.localPosition.y - transform.localPosition.y, 2);
 		distance = Mathf.Sqrt (distance);
 		if (distance < 1) {
-			Debug.Log ("spawn");
 
 
 		} 
 	}
 
 	public void OnTriggerEnter2D(Collider2D collision){
-		Debug.Log ("dnfksdjngskj");
 		if (collision.gameObject.tag == "Player") {
-			if (isCreated == false)
+			if (isCreated == false && !GlobalStuff.UseSpell)
 			{
 				tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 1.25f), new Quaternion(0, 0, 0, 0), can.transform);
 				tb.transform.GetChild(0).GetComponent<Text>().text = thought;
 				isCreated = true;
 			}
-			//Debug.Log ("dnfksdjngskj");
-			//gm.GetComponent<GameManager> ().NumToSpawn++;
 		}
 	}
 

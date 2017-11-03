@@ -60,7 +60,6 @@ public class HelpfulKnight : MonoBehaviour {
             }
             else if (GlobalStuff.KindFinished)
             {
-                Debug.Log("i want to kill myself");
                 moveOff();
             }
         }
@@ -83,7 +82,6 @@ public class HelpfulKnight : MonoBehaviour {
             isDown = true;
             isUp = false;
             curFrame++;
-            Debug.Log(curFrame);
             //play.GetComponent<Player>().CanMove = false;
         }
         

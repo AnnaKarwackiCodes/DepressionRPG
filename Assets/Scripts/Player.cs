@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
                 lastKey = 'S';
 			}
 			//moving left
-			if (Input.GetKey(KeyCode.A))
+			else if (Input.GetKey(KeyCode.A))
 			{
 				if (CollisionKey !='A')
 				{
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
                 lastKey = 'A';
 			}
 			//moving right
-			if (Input.GetKey(KeyCode.D))
+			else if (Input.GetKey(KeyCode.D))
 			{
                 if (CollisionKey != 'D')
 				{
@@ -71,7 +71,6 @@ public class Player : MonoBehaviour {
     {
 		if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC") {
 			CollisionKey = lastKey;
-			Debug.Log ("hit");
 		} 
 		else if (collision.gameObject.tag == "Overthinking") {
 			gm.GetComponent<GameManager> ().NumToSpawn = 20;
@@ -81,12 +80,10 @@ public class Player : MonoBehaviour {
 			//collision.GetComponent<Overthinking> ().spawnOne ();
 		}
 		else if(collision.gameObject.tag == "dog"){
-			Debug.Log ("Found Dog");
             collision.GetComponent<Dog>().Follow = true;
 			GlobalStuff.HaveQuestItem = true;
 		}
         else {
-            Debug.Log("Collision");
         }
     }
     public void OnTriggerExit2D(Collider2D collision)

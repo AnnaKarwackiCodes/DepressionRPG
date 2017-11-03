@@ -76,7 +76,6 @@ public class NPC : MonoBehaviour {
 			}
 			tb.transform.GetChild (1).GetComponent<Image> ().sprite = look;
 			tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
-			Debug.Log ("for the love of god");
 			if (hasQuest) {
 				switch (whatQuest) {
 				case "Overthinking":
