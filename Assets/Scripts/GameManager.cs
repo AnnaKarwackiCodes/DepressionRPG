@@ -37,12 +37,12 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         //GlobalStuff.Aniexty = forTesting;
 
-        overlay.transform.position = new Vector3(overlay.transform.position.x, overlay.transform.position.y, -100);
+        //overlay.transform.position = new Vector3(overlay.transform.position.x, overlay.transform.position.y, -100);
         if(RoomName =="Area 1")
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y - 3, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y - 1.5f, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 3, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 1.5f, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
