@@ -7,7 +7,6 @@ public class BattleManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log(PlayerPrefs.GetInt("BattleType"));
     }
 	
 	// Update is called once per frame

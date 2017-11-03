@@ -21,6 +21,7 @@ public class HelpfulKnight : MonoBehaviour {
     private string[] garbage;
     private GameObject gm;
     private int whichDialogue;
+    private Animator anime;
 
     //text stuff
     private int curFrame = 0;
@@ -40,6 +41,7 @@ public class HelpfulKnight : MonoBehaviour {
 		can = GameObject.Find ("Canvas");
         gm = GameObject.Find("GameManager");
         whichDialogue = 0;
+        anime = this.GetComponent<Animator>();
 
         if (gm.GetComponent<GameManager>().RoomName == "Area 2")
         {
@@ -60,7 +62,6 @@ public class HelpfulKnight : MonoBehaviour {
             }
             else if (GlobalStuff.KindFinished)
             {
-                Debug.Log("i want to kill myself");
                 moveOff();
             }
         }
@@ -83,7 +84,6 @@ public class HelpfulKnight : MonoBehaviour {
             isDown = true;
             isUp = false;
             curFrame++;
-            Debug.Log(curFrame);
             //play.GetComponent<Player>().CanMove = false;
         }
         
@@ -107,9 +107,11 @@ public class HelpfulKnight : MonoBehaviour {
 		float distance = Mathf.Pow (play.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow (play.transform.localPosition.y - transform.localPosition.y, 2);
 		distance = Mathf.Sqrt (distance);
         if (distance > 3) {
+            anime.SetInteger("Direction", 1);
 			transform.Translate ((Vector2.left * 3 * Time.deltaTime));
 
 		} else {
+            anime.enabled = false;
 			transform.Translate ((Vector2.left * 0 * Time.deltaTime));
             if (!GlobalStuff.KindFinished) {
                 if (isCreated == false)
@@ -127,6 +129,7 @@ public class HelpfulKnight : MonoBehaviour {
 
     void atFarm()
     {
+        anime.enabled = false;
         float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
         distance = Mathf.Sqrt(distance);
 
@@ -160,6 +163,8 @@ public class HelpfulKnight : MonoBehaviour {
     void moveOff()
     {
         transform.Translate((Vector2.right * 3 * Time.deltaTime));
+        anime.enabled = true;
+        anime.SetInteger("Direction", 0);
     } 
 
     public bool Finished

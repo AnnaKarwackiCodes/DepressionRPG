@@ -6,7 +6,7 @@ public class Dog : MonoBehaviour {
     private bool follow;
 	// Use this for initialization
 	void Start () {
-        follow = false;
+        //follow = false;
 	}
 	
 	// Update is called once per frame
@@ -23,12 +23,12 @@ public class Dog : MonoBehaviour {
                 transform.Translate(Vector2.down * 3 * Time.deltaTime);
             }
             //moving left
-            if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 transform.Translate(Vector2.left * 3 * Time.deltaTime);
             }
             //moving right
-            if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector2.right * 3 * Time.deltaTime);
             }

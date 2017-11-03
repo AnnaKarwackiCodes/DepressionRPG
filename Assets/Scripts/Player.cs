@@ -13,12 +13,14 @@ public class Player : MonoBehaviour {
     private char CollisionKey;
     private char lastKey;
 	private GameObject gm;
+    private Animator anime;
 
     // Use this for initialization
     void Start () {
         playerSpeed = 3;
         inInteraction = false;
 		gm = GameObject.Find ("GameManager");
+        anime = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -32,8 +34,12 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey(KeyCode.W)) {
 				if (CollisionKey != 'W')
 				{
-					play.transform.Translate(Vector2.up * playerSpeed * Time.deltaTime);
-				}
+                    anime.enabled = true;
+                    anime.SetInteger("Direction", 0);
+                    play.transform.Translate(Vector2.up * playerSpeed * Time.deltaTime);
+                    
+                    
+                }
                 lastKey = 'W';
 			}
 			//moving down
@@ -41,29 +47,49 @@ public class Player : MonoBehaviour {
 			{
 				if (CollisionKey != 'S')
 				{
-					play.transform.Translate(Vector2.down * playerSpeed * Time.deltaTime);
-				}
+                    anime.enabled = true;
+                    anime.SetInteger("Direction", 2);
+                    play.transform.Translate(Vector2.down * playerSpeed * Time.deltaTime);
+                    
+                    
+                }
                 lastKey = 'S';
 			}
 			//moving left
-			if (Input.GetKey(KeyCode.A))
+			else if (Input.GetKey(KeyCode.A))
 			{
 				if (CollisionKey !='A')
 				{
-					play.transform.Translate(Vector2.left * playerSpeed * Time.deltaTime);
-				}
+                    anime.enabled = true;
+                    anime.SetInteger("Direction", 3);
+                    play.transform.Translate(Vector2.left * playerSpeed * Time.deltaTime);
+                    
+                    
+                }
                 lastKey = 'A';
 			}
 			//moving right
-			if (Input.GetKey(KeyCode.D))
+			else if (Input.GetKey(KeyCode.D))
 			{
                 if (CollisionKey != 'D')
 				{
-					play.transform.Translate(Vector2.right * playerSpeed * Time.deltaTime);
-				}
+                    anime.enabled = true;
+                    anime.SetInteger("Direction", 1);
+                    play.transform.Translate(Vector2.right * playerSpeed * Time.deltaTime);
+                    
+                    
+                }
                 lastKey = 'D';
 			}
+            else
+            {
+                anime.enabled = false;
+            }
 		}
+        else
+        {
+            anime.enabled = false;
+        }
     }
 
     //collison stuff!
@@ -71,7 +97,6 @@ public class Player : MonoBehaviour {
     {
 		if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC") {
 			CollisionKey = lastKey;
-			Debug.Log ("hit");
 		} 
 		else if (collision.gameObject.tag == "Overthinking") {
 			gm.GetComponent<GameManager> ().NumToSpawn = 20;
@@ -81,12 +106,10 @@ public class Player : MonoBehaviour {
 			//collision.GetComponent<Overthinking> ().spawnOne ();
 		}
 		else if(collision.gameObject.tag == "dog"){
-			Debug.Log ("Found Dog");
             collision.GetComponent<Dog>().Follow = true;
 			GlobalStuff.HaveQuestItem = true;
 		}
         else {
-            Debug.Log("Collision");
         }
     }
     public void OnTriggerExit2D(Collider2D collision)

@@ -41,12 +41,14 @@ public class MagicSpell : MonoBehaviour {
 	}
 
 	void useAttack(){
+        /*
 		if (Input.GetKeyUp(KeyCode.Return))
 		{
 			isUp = true;
 			isDown = false;
 		}
-		else if (Input.GetKeyDown(KeyCode.Return) && isUp)
+        */
+		if (Input.GetKeyDown(KeyCode.Return))// && isUp)
 		{
 			isDown = true;
 			isUp = false;

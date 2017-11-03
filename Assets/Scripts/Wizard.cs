@@ -98,15 +98,11 @@ public class Wizard : MonoBehaviour {
 			isDown = true;
 			isUp = false;
 			curFrame++;
-			Debug.Log(curFrame);
 			play.GetComponent<Player> ().CanMove = false;
 		}
 
 		if (curFrame >= dialogueSize)
 		{
-			Debug.Log (dialogueSize);
-			Debug.Log ("Testing");
-			Debug.Log (curFrame);
 			if (isCreated)
 			{
 				Destroy(tb, 0);
@@ -123,7 +119,6 @@ public class Wizard : MonoBehaviour {
 	void atHouse(){
 		float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
 		distance = Mathf.Sqrt(distance);
-		Debug.Log (distance);
 		if (distance < 3)
 		{
 			if (isCreated == false) {
@@ -135,7 +130,6 @@ public class Wizard : MonoBehaviour {
 
 				tb.transform.GetChild(2).GetComponent<Text>().text = Name;
 			}
-			Debug.Log ("fdgfjkndgfjnknfdgjnknfdg");
 			tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue2[curFrame];
 			displayText ();
 		}
