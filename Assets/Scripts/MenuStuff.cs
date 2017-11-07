@@ -24,16 +24,10 @@ public class MenuStuff : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //setting up the global shit
-        GlobalStuff.setBaddieOne(3);
-        GlobalStuff.WasInBattle = false;
-        GlobalStuff.Aniexty = true;
-        GlobalStuff.AnxTalk = 0;
-        GlobalStuff.KindFinished = false;
-		GlobalStuff.WizFinished = false;
-		GlobalStuff.TalkToWiz = false;
-		GlobalStuff.UseSpell = false;
+        //GlobalStuff.setBaddieOne(3);
         Cursor.visible = false;
-	}
+        GlobalStuff.reset();
+    }
 	
 	// Update is called once per frame
 	void Update () {

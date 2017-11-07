@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
         {
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 3, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 2, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour {
 		} else if (RoomName == "Wizard house") {
 			if (GlobalStuff.TalkToWiz) {
 				if (spawn == false) {
-					wiz = Instantiate (Wizard, new Vector3 (player.transform.position.x - 6, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
+					wiz = Instantiate (Wizard, new Vector3 (player.transform.position.x - 4, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
 					spawn = true;
 				}
 			}
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour {
 
     private void spawnKnight() {
 		if (spawn == false) {
-			hk = Instantiate (HelpfulKnight, new Vector3 (player.transform.position.x + 15, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
+			hk = Instantiate (HelpfulKnight, new Vector3 (player.transform.position.x + 6, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
 			spawn = true;
 			//player.GetComponent<Player> ().CanMove = false;
 		}

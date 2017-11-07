@@ -148,4 +148,16 @@ public static class GlobalStuff {
     public static bool getBaddie(int pos) {
         return baddiesAlive[pos];
     }
+
+    public static void reset()
+    {
+        wasInBattle = false;
+        aniexty = true;
+        anxTalk = 0;
+        kindFinished = false;
+        wizFinished = false;
+        talkToWiz = false;
+        useSpell = false;
+        haveQuestItem = false;     
+    }
 }

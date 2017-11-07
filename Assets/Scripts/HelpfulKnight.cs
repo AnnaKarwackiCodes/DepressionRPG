@@ -106,7 +106,7 @@ public class HelpfulKnight : MonoBehaviour {
 	void  moveCharacter(){
 		float distance = Mathf.Pow (play.transform.localPosition.x - transform.localPosition.x, 2) + Mathf.Pow (play.transform.localPosition.y - transform.localPosition.y, 2);
 		distance = Mathf.Sqrt (distance);
-        if (distance > 3) {
+        if (distance > 2) {
             anime.SetInteger("Direction", 1);
 			transform.Translate ((Vector2.left * 3 * Time.deltaTime));
 
