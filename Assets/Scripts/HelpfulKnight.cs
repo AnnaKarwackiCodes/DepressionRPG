@@ -48,7 +48,8 @@ public class HelpfulKnight : MonoBehaviour {
             curFrame = 0;
             whichDialogue = 1;
             dialogueSize = Dialogue2.Length;
-            
+			anime.enabled = false;
+			GetComponent<SpriteRenderer>().sprite = look;
         }
     }
 	
@@ -67,7 +68,7 @@ public class HelpfulKnight : MonoBehaviour {
         }
         else if(gm.GetComponent<GameManager>().RoomName == "Area 2")
         {
-            atFarm();
+			atFarm();
         }
 	}
     //show the text

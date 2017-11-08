@@ -114,7 +114,12 @@ public class GameManager : MonoBehaviour {
 			}
             
 		} else if (RoomName == "Area 2") {
-            
+			if (GlobalStuff.KindFinished) {
+				if (spawn == false) {
+					hk = Instantiate (HelpfulKnight, new Vector3 (-3, 2, 0), new Quaternion (0, 0, 0, 0));
+					spawn = true;
+				}
+			}
 
 		} else if (RoomName == "Area 3") {
 			if (trigger || GlobalStuff.UseSpell) {
@@ -128,6 +133,12 @@ public class GameManager : MonoBehaviour {
 				//spawn in wizard to talk
 				spawnWizard ();
 			}
+			if(numOfSpawn >= NumToSpawn && GlobalStuff.UseSpell){
+				DestroyBoxes ();
+				player.transform.position = new Vector2 (-12.9f, -.48f);
+				time = 3f;
+
+			}
 		} else if (RoomName == "Wizard house") {
 			if (GlobalStuff.TalkToWiz) {
 				if (spawn == false) {
@@ -139,7 +150,7 @@ public class GameManager : MonoBehaviour {
 
 		if (GlobalStuff.UseSpell) {
 			if (!iconCreate) {
-				mg = Instantiate (magic, new Vector2 (250, Screen.height - 50), new Quaternion (0, 0, 0, 0), can.transform);
+				mg = Instantiate (magic, new Vector2 (300, Screen.height - 50), new Quaternion (0, 0, 0, 0), can.transform);
 				mg.transform.SetAsLastSibling ();
 				iconCreate = true;
 			}

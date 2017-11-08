@@ -15,6 +15,7 @@ public static class GlobalStuff {
 	private static bool talkToWiz;
 	private static bool useSpell;
 	private static bool haveQuestItem;
+	private static bool kindSpeak;
 
     public static Vector3 PrevPos {
         get {
@@ -132,6 +133,14 @@ public static class GlobalStuff {
 			return haveQuestItem;
 		}
 	}
+	public static bool KindSpeak{
+		set{
+			kindSpeak = value;
+		}
+		get{ 
+			return kindSpeak;
+		}
+	}
 
     public static void setBaddieOne(int length) {
         baddiesAlive = new bool[length];
@@ -158,6 +167,7 @@ public static class GlobalStuff {
         wizFinished = false;
         talkToWiz = false;
         useSpell = false;
-        haveQuestItem = false;     
+        haveQuestItem = false;  
+		kindSpeak = false;
     }
 }
