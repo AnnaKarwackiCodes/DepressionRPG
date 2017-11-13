@@ -5,10 +5,16 @@ using UnityEngine;
 public class Dog : MonoBehaviour {
     private bool follow;
     private GameObject play;
+	private bool moveUp;
+	private bool moveDown;
+	private bool moveLeft;
+	private bool moveRight;
+	private float time;
 	// Use this for initialization
 	void Start () {
         //follow = false;
         play = GameObject.Find("Player");
+		time = .5f;
 	}
 	
 	// Update is called once per frame
@@ -16,25 +22,26 @@ public class Dog : MonoBehaviour {
         withinRange();
         if (follow && GlobalStuff.HaveQuestItem) 
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector2.up * 3 * Time.deltaTime);
-            }
-            //moving down
-            else if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(Vector2.down * 3 * Time.deltaTime);
-            }
-            //moving left
-            else if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(Vector2.left * 3 * Time.deltaTime);
-            }
-            //moving right
-            else if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(Vector2.right * 3 * Time.deltaTime);
-            }
+			if (time < 0) {
+				if (moveUp) {
+					transform.Translate(Vector2.up * 3 * Time.deltaTime);
+					moveUp = false;
+				}
+				if (moveDown) {
+					transform.Translate(Vector2.down * 3 * Time.deltaTime);
+					moveDown = false;
+				}
+				if (moveLeft) {
+					transform.Translate(Vector2.left * 3 * Time.deltaTime);
+					moveLeft = false;
+				}
+				if (moveRight) {
+					transform.Translate(Vector2.right * 3 * Time.deltaTime);
+					moveRight = false;
+				}
+				time = .5f;
+			}
+			time -= Time.deltaTime;
         }
 	}
 
@@ -54,4 +61,27 @@ public class Dog : MonoBehaviour {
         get { return follow; }
         set { follow = value; }
     }
+
+	public bool MoveUp
+	{
+		get { return moveUp; }
+		set { moveUp = value; }
+	}
+
+	public bool MoveDown
+	{
+		get { return moveDown; }
+		set { moveDown = value; }
+	}
+
+	public bool MoveLeft
+	{
+		get { return moveLeft; }
+		set { moveLeft = value; }
+	}
+	public bool MoveRight
+	{
+		get { return moveRight; }
+		set { moveRight = value; }
+	}
 }

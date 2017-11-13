@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour {
 		}
         if(RoomName == "Crossroads")
         {
+			player.GetComponent<Animator> ().enabled = true;
+			player.GetComponent<Animator> ().SetInteger ("Direction", 2);
             if (GlobalStuff.HaveQuestItem)
             {
                 doggo = Instantiate(dog, new Vector3(player.transform.position.x + 2, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
@@ -130,12 +132,14 @@ public class GameManager : MonoBehaviour {
 			if (numOfSpawn >= numToSpawn && !GlobalStuff.UseSpell) {
 				DestroyBoxes (); // add delay later
 				player.transform.position = new Vector2 (-12.9f, -.48f);
+				player.GetComponent<Player> ().SpriteDir = 2;
 				//spawn in wizard to talk
 				spawnWizard ();
 			}
 			if(numOfSpawn >= NumToSpawn && GlobalStuff.UseSpell){
 				DestroyBoxes ();
 				player.transform.position = new Vector2 (-12.9f, -.48f);
+				player.GetComponent<Player> ().SpriteDir = 2;
 				time = 3f;
 
 			}
