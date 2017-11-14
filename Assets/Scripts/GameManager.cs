@@ -40,16 +40,17 @@ public class GameManager : MonoBehaviour {
         //overlay.transform.position = new Vector3(overlay.transform.position.x, overlay.transform.position.y, -100);
         if(RoomName =="Area 1")
         {
-            if (GlobalStuff.HaveQuestItem)
+            if (GlobalStuff.WasInBattle)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y - 1.5f, 0), new Quaternion(0, 0, 0, 0));
-                GlobalStuff.HaveQuestItem = true;
-                doggo.GetComponent<Dog>().Follow = true;
-            }
-            if(GlobalStuff.WasInBattle){
                 Respawn();
                 GlobalStuff.WasInBattle = false;
             }
+            if (GlobalStuff.HaveQuestItem)
+            {
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y + 2, 0), new Quaternion(0, 0, 0, 0));
+                GlobalStuff.HaveQuestItem = true;
+                doggo.GetComponent<Dog>().Follow = true;
+            }            
         }
         if(RoomName == "Area 2")
         {
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour {
 			player.GetComponent<Animator> ().SetInteger ("Direction", 2);
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x + 2, player.transform.position.y, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y-2.5f, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }
