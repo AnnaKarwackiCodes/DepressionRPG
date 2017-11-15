@@ -20,6 +20,7 @@ public class Wizard : MonoBehaviour {
 
 	private bool isUp = true;
 	private bool isDown = false;
+	private float time;
 	// Use this for initialization
 	void Start () {
 		can = GameObject.Find ("Canvas");
@@ -27,6 +28,7 @@ public class Wizard : MonoBehaviour {
 		gm = GameObject.Find ("GameManager");
 		curFrame = 0;
 		isCreated = false;
+		time = 0;
 
 		if (gm.GetComponent<GameManager> ().RoomName == "Area 3") {
 			dialogueSize = Dialogue.Length;
@@ -55,6 +57,7 @@ public class Wizard : MonoBehaviour {
 				GlobalStuff.UseSpell = true;
 			}
 		}
+		time -= Time.deltaTime;
 	}
 
 	void MoveCharacter(){
@@ -105,6 +108,7 @@ public class Wizard : MonoBehaviour {
 		{
 			if (isCreated)
 			{
+				time = 1f;
 				Destroy(tb, 0);
 				isCreated = false;
 				//finished = true;
@@ -119,7 +123,7 @@ public class Wizard : MonoBehaviour {
 	void atHouse(){
 		float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
 		distance = Mathf.Sqrt(distance);
-		if (distance < 3)
+		if (distance < 3 && time <= 0)
 		{
 			if (isCreated == false) {
 				tb = Instantiate(textbox, new Vector2(Screen.width/2,Screen.height/6f), new Quaternion(0,0,0,0), can.transform);

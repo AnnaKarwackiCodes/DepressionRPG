@@ -25,12 +25,13 @@ public class NPC : MonoBehaviour {
 	private bool isUp = true;
 	private bool isDown = false;
     private bool interacted = false;
+	private float time;
 
 	// Use this for initialization
 	void Start () {
         GetComponent<SpriteRenderer>().sprite = look;
         dialogueSize = Dialogue.Length;
-        
+		time = 0;
     }
 	
 	// Update is called once per frame
@@ -43,7 +44,7 @@ public class NPC : MonoBehaviour {
         float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
         distance = Mathf.Sqrt(distance);
 
-		if (distance < 3 &&(!hasQuest || !GlobalStuff.HaveQuestItem)) {
+		if (distance < 3 &&(!hasQuest || !GlobalStuff.HaveQuestItem) && time <= 0) {
 			if (isCreated == false) {
 				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
 				isCreated = true;
@@ -64,7 +65,7 @@ public class NPC : MonoBehaviour {
 			}
 			displayText ();
 		}
-		else if (distance < 3 && hasQuest && GlobalStuff.HaveQuestItem) {
+		else if (distance < 3 && hasQuest && GlobalStuff.HaveQuestItem && time <= 0) {
 			if (isCreated == false) {
 				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
 				isCreated = true;
@@ -87,11 +88,10 @@ public class NPC : MonoBehaviour {
 			}
 		}
         else {
-            if (isCreated) {
-                Destroy(tb, 0);
-                isCreated = false;
-                play.GetComponent<Player>().InInteraction = false;
-
+			if (isCreated) {
+				Destroy(tb, 0);
+				isCreated = false;
+				play.GetComponent<Player>().InInteraction = false;
 				switch (whatQuest) {
 				case "Overthinking":
 					if (GlobalStuff.HaveQuestItem) {
@@ -99,9 +99,10 @@ public class NPC : MonoBehaviour {
 					}
 					break;
 				}
-            }
+			}
             
         }
+		time -= Time.deltaTime;
     }
 
     void displayText() {
@@ -121,8 +122,11 @@ public class NPC : MonoBehaviour {
         }
 
 		if (curFrame > dialogueSize - 1) {
+			time = 1f;
 			curFrame = 0;
 			play.GetComponent<Player>().CanMove = true;
+			Destroy(tb, 0);
+			isCreated = false;
 			if (hasQuest) {
 				switch (whatQuest) {
 				case "Overthinking":

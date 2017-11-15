@@ -114,7 +114,7 @@ public class Player : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-		if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC") {
+		if (collision.gameObject.tag == "Enviroment" || collision.gameObject.tag == "NPC" || collision.gameObject.tag == "Kind Knight") {
             //CollisionKey = lastKey;
             /*
             for(int i = 0; i < 4; i++)

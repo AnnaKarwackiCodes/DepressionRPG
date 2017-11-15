@@ -28,11 +28,10 @@ public class HelpfulKnight : MonoBehaviour {
     private bool isUp = true;
     private bool isDown = false;
     private bool finished = false;
-    private float time = 2f;
-    private float time2 = 3f;
     private bool interact = false;
 
-	private 
+
+	private float time; 
     // Use this for initialization
     void Start () {
         GetComponent<SpriteRenderer>().sprite = look;
@@ -42,6 +41,7 @@ public class HelpfulKnight : MonoBehaviour {
         gm = GameObject.Find("GameManager");
         whichDialogue = 0;
         anime = this.GetComponent<Animator>();
+		time = 0;
 
         if (gm.GetComponent<GameManager>().RoomName == "Area 2")
         {
@@ -70,6 +70,7 @@ public class HelpfulKnight : MonoBehaviour {
         {
 			atFarm();
         }
+		time -= Time.deltaTime;
 	}
     //show the text
     void displayText()
@@ -98,6 +99,7 @@ public class HelpfulKnight : MonoBehaviour {
                 GlobalStuff.KindFinished = true;
                 play.GetComponent<Player>().CanMove = true;
                 curFrame = 0;
+				time = 1f;
             }
         }
 
@@ -134,7 +136,7 @@ public class HelpfulKnight : MonoBehaviour {
         float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
         distance = Mathf.Sqrt(distance);
 
-        if (distance < 3)
+		if (distance < 3 && time <= 0)
         {
             if (isCreated == false)
             {
