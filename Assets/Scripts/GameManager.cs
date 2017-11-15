@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
             }
             if (GlobalStuff.HaveQuestItem)
             {
-                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y + 2, 0), new Quaternion(0, 0, 0, 0));
+                doggo = Instantiate(dog, new Vector3(player.transform.position.x, player.transform.position.y - 2.5f, 0), new Quaternion(0, 0, 0, 0));
                 GlobalStuff.HaveQuestItem = true;
                 doggo.GetComponent<Dog>().Follow = true;
             }            
