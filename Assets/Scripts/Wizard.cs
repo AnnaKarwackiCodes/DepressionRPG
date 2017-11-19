@@ -21,11 +21,13 @@ public class Wizard : MonoBehaviour {
 	private bool isUp = true;
 	private bool isDown = false;
 	private float time;
-	// Use this for initialization
-	void Start () {
+    private Animator anime;
+    // Use this for initialization
+    void Start () {
 		can = GameObject.Find ("Canvas");
 		play = GameObject.Find ("Player");
 		gm = GameObject.Find ("GameManager");
+        anime = this.GetComponent<Animator>();
 		curFrame = 0;
 		isCreated = false;
 		time = 0;
@@ -68,6 +70,7 @@ public class Wizard : MonoBehaviour {
 
 		} else {
 			transform.Translate ((Vector2.left * 0 * Time.deltaTime));
+            anime.enabled = false;
 			if (!GlobalStuff.WizFinished) {
 				if (isCreated == false)
 				{
@@ -86,6 +89,8 @@ public class Wizard : MonoBehaviour {
 	{
 		transform.Translate((Vector2.left * 3 * Time.deltaTime));
 		play.GetComponent<Player>().CanMove = true;
+        anime.SetInteger("Direction", 2);
+        anime.enabled = true;
 	} 
 
 	void displayText()
@@ -123,6 +128,7 @@ public class Wizard : MonoBehaviour {
 	void atHouse(){
 		float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
 		distance = Mathf.Sqrt(distance);
+        anime.enabled = false;
 		if (distance < 3 && time <= 0)
 		{
 			if (isCreated == false) {

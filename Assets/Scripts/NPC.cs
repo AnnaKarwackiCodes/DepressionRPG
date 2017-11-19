@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class NPC : MonoBehaviour {
     public string Name;
     public Sprite look;
+    public Sprite image;
     public string[] Dialogue;
 	public GameObject textbox;
 	public GameObject can;
@@ -54,7 +55,7 @@ public class NPC : MonoBehaviour {
 				}
 				play.GetComponent<Player> ().InInteraction = true;
 			}
-			tb.transform.GetChild (1).GetComponent<Image> ().sprite = look;
+			tb.transform.GetChild (1).GetComponent<Image> ().sprite = image;
 			if (GlobalStuff.Aniexty == true) {
 				//gibberish
 				tb.transform.GetChild (0).GetComponent<Text> ().text = "sdasheabfdcb";
@@ -75,7 +76,7 @@ public class NPC : MonoBehaviour {
 				}
 				play.GetComponent<Player> ().InInteraction = true;
 			}
-			tb.transform.GetChild (1).GetComponent<Image> ().sprite = look;
+			tb.transform.GetChild (1).GetComponent<Image> ().sprite = image;
 			tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
 			if (hasQuest) {
 				switch (whatQuest) {
