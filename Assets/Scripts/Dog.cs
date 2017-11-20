@@ -5,11 +5,14 @@ using UnityEngine;
 public class Dog : MonoBehaviour {
     private bool follow;
     private GameObject play;
-	// Use this for initialization
-	void Start () {
+    private Animator anime;
+    // Use this for initialization
+    void Start () {
         //follow = false;
         play = GameObject.Find("Player");
-	}
+        anime = this.GetComponent<Animator>();
+        anime.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,11 +23,21 @@ public class Dog : MonoBehaviour {
             distance = Mathf.Sqrt(distance);
             if (distance < 3)
             {
+                if (play.GetComponent<Player>().Direct != 4)
+                {
+                    anime.enabled = true;
+                    anime.SetInteger("Direction", play.GetComponent<Player>().Direct);
+                }
+                else
+                {
+                    anime.enabled = false;
+                }
                 transform.position = Vector3.MoveTowards(transform.position, play.GetComponent<Player>().FollowBuff, 4 * Time.deltaTime);
             }
             else
             {
                 transform.Translate(Vector2.down * 0 * Time.deltaTime);
+                anime.enabled = false;
             }
            
         }
@@ -46,4 +59,6 @@ public class Dog : MonoBehaviour {
         get { return follow; }
         set { follow = value; }
     }
+
+   
 }

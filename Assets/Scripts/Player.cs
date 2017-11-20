@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 
 	public Sprite[] allDirections;
     private Vector3 followBuff;
+    private int direct;
 
     // Use this for initialization
     void Start () {
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour {
                 pressedKeys.Push(0);
 
                 followBuff = new Vector3(play.transform.position.x, play.transform.position.y - 2);
+                direct = 3;
             }
 			//moving down
 			else if (Input.GetKey(KeyCode.S) && !moveDir[1])
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour {
                 direction[1] = true;
                 pressedKeys.Push(1);
                 followBuff = new Vector3(play.transform.position.x, play.transform.position.y + 2);
+                direct = 1;
             }
             //moving left
             if (Input.GetKey(KeyCode.A) && !moveDir[2])
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour {
                 direction[2] = true;
                 pressedKeys.Push(2);
                 followBuff = new Vector3(play.transform.position.x +2, play.transform.position.y);
+                direct = 0;
             }
 			//moving right
 			else if (Input.GetKey(KeyCode.D) && !moveDir[3])
@@ -86,11 +90,12 @@ public class Player : MonoBehaviour {
                 direction[3] = true;
                 pressedKeys.Push(3);
                 followBuff = new Vector3(play.transform.position.x - 2, play.transform.position.y);
+                direct = 2;
             }
             if(!Input.GetKey(KeyCode.D)&& !Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.S))
             {
                 anime.enabled = false;
-                
+                direct = 4;
                 for(int i =0; i < 4;i++)
                 {
                     direction[i] = false;
@@ -191,5 +196,10 @@ public class Player : MonoBehaviour {
         {
             return followBuff;
         }
+    }
+    public int Direct
+    {
+        get { return direct; }
+        set { direct = value; }
     }
 }
