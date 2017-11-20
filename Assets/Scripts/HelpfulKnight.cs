@@ -111,7 +111,7 @@ public class HelpfulKnight : MonoBehaviour {
 		distance = Mathf.Sqrt (distance);
         if (distance > 2) {
             anime.SetInteger("Direction", 1);
-			transform.Translate ((Vector2.left * 3 * Time.deltaTime));
+			transform.Translate ((Vector2.down * 3 * Time.deltaTime));
 
 		} else {
             anime.enabled = false;
@@ -165,7 +165,7 @@ public class HelpfulKnight : MonoBehaviour {
 
     void moveOff()
     {
-        transform.Translate((Vector2.right * 3 * Time.deltaTime));
+        transform.Translate((Vector2.up * 3 * Time.deltaTime));
         anime.enabled = true;
         anime.SetInteger("Direction", 0);
     } 

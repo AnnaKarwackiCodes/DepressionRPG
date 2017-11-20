@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
 
     private void spawnKnight() {
 		if (spawn == false) {
-			hk = Instantiate (HelpfulKnight, new Vector3 (player.transform.position.x + 6, player.transform.position.y, 0), new Quaternion (0, 0, 0, 0));
+			hk = Instantiate (HelpfulKnight, new Vector3 (player.transform.position.x, player.transform.position.y + 6, 0), new Quaternion (0, 0, 0, 0));
 			spawn = true;
 			//player.GetComponent<Player> ().CanMove = false;
 		}
