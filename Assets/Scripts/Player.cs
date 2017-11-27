@@ -42,6 +42,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(pressedKeys == null)
+        {
+            pressedKeys = new Stack<int>();
+        }
         Movement();
 	}
 

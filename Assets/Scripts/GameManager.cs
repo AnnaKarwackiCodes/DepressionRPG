@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour {
 		} else if (RoomName == "Area 2") {
 			if (GlobalStuff.KindFinished) {
 				if (spawn == false) {
-					hk = Instantiate (HelpfulKnight, new Vector3 (-3, 2, 0), new Quaternion (0, 0, 0, 0));
+					hk = Instantiate (HelpfulKnight, new Vector3 (-17, 16, 0), new Quaternion (0, 0, 0, 0));
 					spawn = true;
 				}
 			}
