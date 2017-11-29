@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c69226ca32c4f534a8d30e020084278f
-timeCreated: 1509669622
+timeCreated: 1511969962
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -119,10 +119,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -130,12 +130,12 @@ TextureImporter:
       name: sadKnight_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -143,12 +143,12 @@ TextureImporter:
       name: sadKnight_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -156,12 +156,12 @@ TextureImporter:
       name: sadKnight_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 195
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -169,12 +169,12 @@ TextureImporter:
       name: sadKnight_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 260
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -182,12 +182,12 @@ TextureImporter:
       name: sadKnight_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 325
         y: 325
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -197,10 +197,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -208,12 +208,12 @@ TextureImporter:
       name: sadKnight_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -221,12 +221,12 @@ TextureImporter:
       name: sadKnight_spritesheet_8
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -234,12 +234,12 @@ TextureImporter:
       name: sadKnight_spritesheet_9
       rect:
         serializedVersion: 2
-        x: 192
+        x: 195
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -247,12 +247,12 @@ TextureImporter:
       name: sadKnight_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 256
+        x: 260
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -260,12 +260,12 @@ TextureImporter:
       name: sadKnight_spritesheet_11
       rect:
         serializedVersion: 2
-        x: 320
+        x: 325
         y: 260
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -275,10 +275,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -286,12 +286,12 @@ TextureImporter:
       name: sadKnight_spritesheet_13
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -299,12 +299,12 @@ TextureImporter:
       name: sadKnight_spritesheet_14
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -312,12 +312,12 @@ TextureImporter:
       name: sadKnight_spritesheet_15
       rect:
         serializedVersion: 2
-        x: 192
+        x: 195
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -325,12 +325,12 @@ TextureImporter:
       name: sadKnight_spritesheet_16
       rect:
         serializedVersion: 2
-        x: 256
+        x: 260
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -338,12 +338,12 @@ TextureImporter:
       name: sadKnight_spritesheet_17
       rect:
         serializedVersion: 2
-        x: 320
+        x: 325
         y: 195
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -353,10 +353,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -364,12 +364,12 @@ TextureImporter:
       name: sadKnight_spritesheet_19
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -377,12 +377,12 @@ TextureImporter:
       name: sadKnight_spritesheet_20
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -390,12 +390,12 @@ TextureImporter:
       name: sadKnight_spritesheet_21
       rect:
         serializedVersion: 2
-        x: 192
+        x: 195
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -403,12 +403,12 @@ TextureImporter:
       name: sadKnight_spritesheet_22
       rect:
         serializedVersion: 2
-        x: 256
+        x: 260
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -416,12 +416,12 @@ TextureImporter:
       name: sadKnight_spritesheet_23
       rect:
         serializedVersion: 2
-        x: 320
+        x: 325
         y: 130
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -431,10 +431,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 65
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -442,12 +442,12 @@ TextureImporter:
       name: sadKnight_spritesheet_25
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 65
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -455,12 +455,12 @@ TextureImporter:
       name: sadKnight_spritesheet_26
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 65
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -468,12 +468,12 @@ TextureImporter:
       name: sadKnight_spritesheet_27
       rect:
         serializedVersion: 2
-        x: 192
+        x: 195
         y: 65
-        width: 64
+        width: 65
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
