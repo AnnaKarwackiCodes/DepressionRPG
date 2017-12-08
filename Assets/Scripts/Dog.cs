@@ -41,7 +41,7 @@ public class Dog : MonoBehaviour {
             }
            
         }
-	}
+    }
 
     void withinRange()
     {
@@ -51,6 +51,10 @@ public class Dog : MonoBehaviour {
         {
             follow = true;
             GlobalStuff.HaveQuestItem = true;
+            if (GlobalStuff.EntriesUnlocked == 5)
+            {
+                GlobalStuff.GetAlert = true;
+            }
         }
     }
 

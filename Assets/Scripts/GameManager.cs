@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public string RoomName;
 	public GameObject can;
     public string[] negthoughts;
+    public string[] negthoughts2;
     public GameObject dog;
     public GameObject overlay;
 
@@ -108,9 +109,9 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log("please: " + GlobalStuff.EntriesUnlocked);
+        //GlobalStuff.EntriesUnlocked = Tester;
 
-		if (RoomName == "Area 1") {
+        if (RoomName == "Area 1") {
 			if (GlobalStuff.Aniexty == true) {
 				if (GlobalStuff.AnxTalk >= 3 && !player.GetComponent<Player> ().InInteraction) {
 					player.GetComponent<Player> ().CanMove = false;
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour {
 				player.transform.position = new Vector2 (-12.9f, -.48f);
 				player.GetComponent<Player> ().SpriteDir = 2;
 				time = 3f;
-
+                GlobalStuff.HaveQuestItem = false;
 			}
 		} else if (RoomName == "Wizard house") {
 			if (GlobalStuff.TalkToWiz) {
@@ -199,12 +200,19 @@ public class GameManager : MonoBehaviour {
 
 	private void spawnTextBoxes(){
         //if (numOfSpawn < numToSpawn && time <= 0) {
-        if (time <= 0)
+        if (time <= 0 && !GlobalStuff.IsPaused)
         {
             for (int i = 0; i < spawnNum; i++)
             {
                 tb = Instantiate(textbox, new Vector2(Random.Range((20), (Screen.width - 20)), Random.Range((20), (Screen.height - 20))), new Quaternion(0, 0, 0, 0), can.transform);
-                tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts[Random.Range(0, negthoughts.Length - 1)];
+                if (GlobalStuff.HaveQuestItem)
+                {
+                    tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts2[Random.Range(0, negthoughts.Length - 1)];
+                }
+                else
+                {
+                    tb.transform.GetChild(0).GetComponent<Text>().text = negthoughts[Random.Range(0, negthoughts.Length - 1)];
+                }
                 boxes[numOfSpawn] = tb;
                 numOfSpawn++;
                 tb.transform.SetAsFirstSibling();
@@ -255,9 +263,9 @@ public class GameManager : MonoBehaviour {
 
     public void DisplayJournalEntries()
     {
-        Debug.Log(currentPage);
+        //only draw the arrows if you can move pages
+
         if (Input.GetKeyDown(KeyCode.A)) {
-            Debug.Log("back");
             //go back a page
             currentPage -= 2;
             if (currentPage < 0)
@@ -267,16 +275,43 @@ public class GameManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("Forward");
             //go forward a page
             currentPage += 2;
             if (currentPage > GlobalStuff.EntriesUnlocked)
             {
-                currentPage = GlobalStuff.EntriesUnlocked - 1;
+                currentPage = GlobalStuff.EntriesUnlocked;
             }
         }
+        //arrow stuff
+        //show prev arrow if cur > 0
+        if(currentPage >= 2)
+        {
+            Color color = jrn.transform.GetChild(3).GetComponent<Image>().color;
+            color.a = 255f;
+            jrn.transform.GetChild(3).GetComponent<Image>().color = color;
+        }
+        else
+        {
+            Color color = jrn.transform.GetChild(3).GetComponent<Image>().color;
+            color.a = 0f;
+            jrn.transform.GetChild(3).GetComponent<Image>().color = color;
+        }
+        //show next arrpw if curr < total
+        if(currentPage < GlobalStuff.EntriesUnlocked-1)
+        {
+            Color color = jrn.transform.GetChild(2).GetComponent<Image>().color;
+            color.a = 255f;
+            jrn.transform.GetChild(2).GetComponent<Image>().color = color;
+        }
+        else
+        {
+            Color color = jrn.transform.GetChild(2).GetComponent<Image>().color;
+            color.a = 0f;
+            jrn.transform.GetChild(2).GetComponent<Image>().color = color;
+        }
+
         //show all entries on both pages
-        if (currentPage == 0)
+        if (currentPage == 0 || currentPage == 1)
         {
             jrn.transform.GetChild(0).GetComponent<Text>().text = journalEntries[0];
             if (GlobalStuff.EntriesUnlocked >= 1)
@@ -288,7 +323,7 @@ public class GameManager : MonoBehaviour {
                 jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
             }
         }
-        else if (currentPage == 2)
+        else if (currentPage == 2 || currentPage == 3)
         {
             if (GlobalStuff.EntriesUnlocked >= 2)
             {
@@ -303,7 +338,7 @@ public class GameManager : MonoBehaviour {
                 jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
             }
         }
-        else if (currentPage == 4)
+        else if (currentPage == 4 || currentPage == 5)
         {
             if (GlobalStuff.EntriesUnlocked >= 4)
             {
@@ -346,6 +381,7 @@ public class GameManager : MonoBehaviour {
     public void NewJournalEntry()
     {
         GlobalStuff.EntriesUnlocked++;
+        currentPage = GlobalStuff.EntriesUnlocked;
         //Debug.Log(GlobalStuff.EntriesUnlocked);
         //GlobalStuff.GetAlert = true;
         if (!createAlert)

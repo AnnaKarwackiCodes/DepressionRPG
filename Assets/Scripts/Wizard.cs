@@ -121,6 +121,10 @@ public class Wizard : MonoBehaviour {
 				GlobalStuff.WizFinished = true;
 				play.GetComponent<Player>().CanMove = true;
 				curFrame = 0;
+                if(GlobalStuff.EntriesUnlocked == 4)
+                {
+                    GlobalStuff.GetAlert = true;
+                }
 			}
 		}
 	}

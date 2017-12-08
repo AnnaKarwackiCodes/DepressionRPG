@@ -94,12 +94,20 @@ public class HelpfulKnight : MonoBehaviour {
             if (isCreated)
             {
                 Destroy(tb, 0);
+                if (GlobalStuff.KindFinished)
+                {
+                    GlobalStuff.Aniexty = false;
+                }
                 isCreated = false;
                 //finished = true;
                 GlobalStuff.KindFinished = true;
                 play.GetComponent<Player>().CanMove = true;
                 curFrame = 0;
 				time = 1f;
+                if(GlobalStuff.EntriesUnlocked == 2)
+                {
+                    GlobalStuff.GetAlert = true;
+                }
             }
         }
 
@@ -156,8 +164,7 @@ public class HelpfulKnight : MonoBehaviour {
                 Destroy(tb, 0);
                 isCreated = false;
                 play.GetComponent<Player>().InInteraction = false;
-                curFrame = 0;
-                GlobalStuff.Aniexty = false;
+                curFrame = 0;      
             }
 
         }

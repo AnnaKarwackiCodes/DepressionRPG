@@ -24,7 +24,6 @@ public class NPC : MonoBehaviour {
 	//text stuff
 	private int curFrame = 0;
 	private bool isUp = true;
-	private bool isDown = false;
     private bool interacted = false;
 	private float time;
 
@@ -45,69 +44,89 @@ public class NPC : MonoBehaviour {
         float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
         distance = Mathf.Sqrt(distance);
 
-		if (distance < 3 &&(!hasQuest || !GlobalStuff.HaveQuestItem) && time <= 0) {
-			if (isCreated == false) {
-				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
-				isCreated = true;
-				if (interacted == false) {
-					GlobalStuff.AnxTalk++;
-					
-				}
-				play.GetComponent<Player> ().InInteraction = true;
-			}
-			tb.transform.GetChild (1).GetComponent<Image> ().sprite = image;
-			if (GlobalStuff.Aniexty == true) {
-				//gibberish
-				tb.transform.GetChild (0).GetComponent<Text> ().text = garbage[0];
-				tb.transform.GetChild (2).GetComponent<Text> ().text = "adnlsak";
-			} else {
-				tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [0];
-				tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
-			}
-			displayText ();
-		}
-		else if (distance < 3 && hasQuest && GlobalStuff.HaveQuestItem && time <= 0) {
-			if (isCreated == false) {
-				tb = Instantiate (textbox, new Vector2 (Screen.width / 2, Screen.height / 6f), new Quaternion (0, 0, 0, 0), can.transform);
-				isCreated = true;
-				if (interacted == false) {
-					GlobalStuff.AnxTalk++;
-					
-				}
-				play.GetComponent<Player> ().InInteraction = true;
-			}
-			tb.transform.GetChild (1).GetComponent<Image> ().sprite = image;
-			tb.transform.GetChild (2).GetComponent<Text> ().text = Name;
-			if (hasQuest) {
-				switch (whatQuest) {
-				case "Overthinking":
-					if (GlobalStuff.HaveQuestItem) {
-						tb.transform.GetChild (0).GetComponent<Text> ().text = "Thank you!!"; //temp
-					}
-					break;
-				}
-			}
-		}
-        else {
-			if (isCreated) {
-				Destroy(tb, 0);
-				isCreated = false;
-				play.GetComponent<Player>().InInteraction = false;
-                if (GlobalStuff.AnxTalk == 1 && !interacted)
+        if (!GlobalStuff.IsPaused)
+        {
+            if (distance < 3 && (!hasQuest || !GlobalStuff.HaveQuestItem) && time <= 0)
+            {
+                if (isCreated == false)
                 {
-                    GlobalStuff.GetAlert = true;
+                    tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 6f), new Quaternion(0, 0, 0, 0), can.transform);
+                    isCreated = true;
+                    if (interacted == false)
+                    {
+                        GlobalStuff.AnxTalk++;
+
+                    }
+                    play.GetComponent<Player>().InInteraction = true;
                 }
-                interacted = true;
-                switch (whatQuest) {
-				case "Overthinking":
-					if (GlobalStuff.HaveQuestItem) {
-						SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
-					}
-					break;
-				}
-			}
-            
+                tb.transform.GetChild(1).GetComponent<Image>().sprite = image;
+                if (GlobalStuff.Aniexty == true)
+                {
+                    //gibberish
+                    tb.transform.GetChild(0).GetComponent<Text>().text = garbage[0];
+                    tb.transform.GetChild(2).GetComponent<Text>().text = "adnlsak";
+                }
+                else
+                {
+                    tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[0];
+                    tb.transform.GetChild(2).GetComponent<Text>().text = Name;
+                }
+                displayText();
+            }
+            else if (distance < 3 && hasQuest && GlobalStuff.HaveQuestItem && time <= 0)
+            {
+                if (isCreated == false)
+                {
+                    tb = Instantiate(textbox, new Vector2(Screen.width / 2, Screen.height / 6f), new Quaternion(0, 0, 0, 0), can.transform);
+                    isCreated = true;
+                    if (interacted == false)
+                    {
+                        GlobalStuff.AnxTalk++;
+
+                    }
+                    play.GetComponent<Player>().InInteraction = true;
+                }
+                tb.transform.GetChild(1).GetComponent<Image>().sprite = image;
+                tb.transform.GetChild(2).GetComponent<Text>().text = Name;
+                if (hasQuest)
+                {
+                    switch (whatQuest)
+                    {
+                        case "Overthinking":
+                            if (GlobalStuff.HaveQuestItem)
+                            {
+                                tb.transform.GetChild(0).GetComponent<Text>().text = "Thank you!!"; //temp
+                            }
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                if (isCreated)
+                {
+                    Destroy(tb, 0);
+                    isCreated = false;
+                    play.GetComponent<Player>().InInteraction = false;
+                    if (GlobalStuff.AnxTalk == 1 && !interacted && GlobalStuff.EntriesUnlocked == 1)
+                    {
+                        GlobalStuff.GetAlert = true;
+                    }
+                    interacted = true;
+                    switch (whatQuest)
+                    {
+                        case "Overthinking":
+                            if (GlobalStuff.HaveQuestItem)
+                            {
+                                SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+                            }
+                            break;
+                    }
+                }
+
+            }
         }
+        
 		time -= Time.deltaTime;
     }
 
@@ -116,11 +135,9 @@ public class NPC : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.E))
             {
                 isUp = true;
-                isDown = false;
             }
             else if (Input.GetKeyDown(KeyCode.E) && isUp)
             {
-                isDown = true;
                 isUp = false;
                 curFrame++;
                 play.GetComponent<Player>().CanMove = false;
@@ -138,7 +155,10 @@ public class NPC : MonoBehaviour {
 				switch (whatQuest) {
 				case "Overthinking":
 					GlobalStuff.OverthinkingStart = true;
-                        GlobalStuff.GetAlert = true;
+                        if (GlobalStuff.EntriesUnlocked == 3)
+                        {
+                            GlobalStuff.GetAlert = true;
+                        }
 					break;
 				}
 			}
