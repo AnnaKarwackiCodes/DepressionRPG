@@ -19,7 +19,7 @@ public class NPC : MonoBehaviour {
     private int dialogueSize;
     private bool isCreated = false;
 	private GameObject tb;
-    private string[] garbage;
+    public string[] garbage;
 
 	//text stuff
 	private int curFrame = 0;
@@ -51,14 +51,14 @@ public class NPC : MonoBehaviour {
 				isCreated = true;
 				if (interacted == false) {
 					GlobalStuff.AnxTalk++;
-					interacted = true;
+					
 				}
 				play.GetComponent<Player> ().InInteraction = true;
 			}
 			tb.transform.GetChild (1).GetComponent<Image> ().sprite = image;
 			if (GlobalStuff.Aniexty == true) {
 				//gibberish
-				tb.transform.GetChild (0).GetComponent<Text> ().text = "sdasheabfdcb";
+				tb.transform.GetChild (0).GetComponent<Text> ().text = garbage[0];
 				tb.transform.GetChild (2).GetComponent<Text> ().text = "adnlsak";
 			} else {
 				tb.transform.GetChild (0).GetComponent<Text> ().text = Dialogue [0];
@@ -72,7 +72,7 @@ public class NPC : MonoBehaviour {
 				isCreated = true;
 				if (interacted == false) {
 					GlobalStuff.AnxTalk++;
-					interacted = true;
+					
 				}
 				play.GetComponent<Player> ().InInteraction = true;
 			}
@@ -93,7 +93,12 @@ public class NPC : MonoBehaviour {
 				Destroy(tb, 0);
 				isCreated = false;
 				play.GetComponent<Player>().InInteraction = false;
-				switch (whatQuest) {
+                if (GlobalStuff.AnxTalk == 1 && !interacted)
+                {
+                    GlobalStuff.GetAlert = true;
+                }
+                interacted = true;
+                switch (whatQuest) {
 				case "Overthinking":
 					if (GlobalStuff.HaveQuestItem) {
 						SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
@@ -127,11 +132,13 @@ public class NPC : MonoBehaviour {
 			curFrame = 0;
 			play.GetComponent<Player>().CanMove = true;
 			Destroy(tb, 0);
-			isCreated = false;
+            interacted = true;
+            isCreated = false;
 			if (hasQuest) {
 				switch (whatQuest) {
 				case "Overthinking":
 					GlobalStuff.OverthinkingStart = true;
+                        GlobalStuff.GetAlert = true;
 					break;
 				}
 			}
@@ -139,7 +146,7 @@ public class NPC : MonoBehaviour {
         if (GlobalStuff.Aniexty == true)
         {
             //gibberish
-            tb.transform.GetChild(0).GetComponent<Text>().text = "sdasheabfdcb";
+            tb.transform.GetChild(0).GetComponent<Text>().text = garbage[0];
         }
         else {
             tb.transform.GetChild(0).GetComponent<Text>().text = Dialogue[curFrame];

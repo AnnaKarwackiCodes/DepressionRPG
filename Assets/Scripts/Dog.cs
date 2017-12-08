@@ -17,7 +17,7 @@ public class Dog : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         withinRange();
-        if (follow && GlobalStuff.HaveQuestItem) 
+        if (follow && GlobalStuff.HaveQuestItem && !GlobalStuff.IsPaused) 
         {
             float distance = Mathf.Pow(play.transform.position.x - transform.position.x, 2) + Mathf.Pow(play.transform.position.y - transform.position.y, 2);
             distance = Mathf.Sqrt(distance);

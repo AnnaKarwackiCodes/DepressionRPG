@@ -16,7 +16,17 @@ public class GameManager : MonoBehaviour {
     public GameObject dog;
     public GameObject overlay;
 
-	private GameObject hk;
+    public GameObject journal;
+    private bool journalCreate;
+    private bool journalActive;
+    private GameObject jrn;
+    public string[] journalEntries;
+    private int currentPage;
+    public GameObject myAlert;
+    private GameObject alert;
+    private bool createAlert;
+
+    private GameObject hk;
 	private GameObject wiz;
 	private bool spawn = false;
 
@@ -33,11 +43,10 @@ public class GameManager : MonoBehaviour {
     private int spawnNum;
     private GameObject doggo;
 
+    public int Tester;
+
 	// Use this for initialization
 	void Start () {
-        //GlobalStuff.Aniexty = forTesting;
-
-        //overlay.transform.position = new Vector3(overlay.transform.position.x, overlay.transform.position.y, -100);
         if(RoomName =="Area 1")
         {
             if (GlobalStuff.WasInBattle)
@@ -89,12 +98,19 @@ public class GameManager : MonoBehaviour {
             }
         }
 		iconCreate = false;
+        journalCreate = false;
+        journalActive = false;
+        currentPage = 0;
+
+        createAlert = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        Debug.Log("please: " + GlobalStuff.EntriesUnlocked);
+
 		if (RoomName == "Area 1") {
-			//GlobalStuff.Aniexty = forTesting;
 			if (GlobalStuff.Aniexty == true) {
 				if (GlobalStuff.AnxTalk >= 3 && !player.GetComponent<Player> ().InInteraction) {
 					player.GetComponent<Player> ().CanMove = false;
@@ -160,7 +176,14 @@ public class GameManager : MonoBehaviour {
 				iconCreate = true;
 			}
 		}
-	}
+
+        OpenCloseJournal();
+        if (GlobalStuff.GetAlert)
+        {
+            NewJournalEntry();
+            GlobalStuff.GetAlert = false;  
+        }
+    }
     //respawn into proper place 
     private void Respawn() {
         player.transform.position = GlobalStuff.PrevPos;
@@ -191,7 +214,118 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-	public void DestroyBoxes(){
+    private void OpenCloseJournal()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (GameObject.Find("Alert(Clone)"))
+            {
+                Destroy(alert, 0);
+                createAlert = false;
+            }
+            journalActive = !journalActive;
+            if (journalActive)
+            {
+                if (!journalCreate)
+                {
+                    //create it
+                    jrn = Instantiate(journal, new Vector2(Screen.width/2,Screen.height/2), new Quaternion(0, 0, 0, 0), can.transform);
+                    journalCreate = true;
+                }
+                GlobalStuff.IsPaused = true;
+            }
+            else
+            {
+                if (journalCreate)
+                {
+                    //destroy it
+                    Destroy(jrn, 0);
+                    journalCreate = false;
+                    currentPage = 0;
+                }
+                GlobalStuff.IsPaused = false;
+            }
+        }
+        if (journalActive)
+        {
+            DisplayJournalEntries(); 
+        }
+    }
+
+    public void DisplayJournalEntries()
+    {
+        Debug.Log(currentPage);
+        if (Input.GetKeyDown(KeyCode.A)) {
+            Debug.Log("back");
+            //go back a page
+            currentPage -= 2;
+            if (currentPage < 0)
+            {
+                currentPage = 0;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("Forward");
+            //go forward a page
+            currentPage += 2;
+            if (currentPage > GlobalStuff.EntriesUnlocked)
+            {
+                currentPage = GlobalStuff.EntriesUnlocked - 1;
+            }
+        }
+        //show all entries on both pages
+        if (currentPage == 0)
+        {
+            jrn.transform.GetChild(0).GetComponent<Text>().text = journalEntries[0];
+            if (GlobalStuff.EntriesUnlocked >= 1)
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = journalEntries[1];
+            }
+            else
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
+            }
+        }
+        else if (currentPage == 2)
+        {
+            if (GlobalStuff.EntriesUnlocked >= 2)
+            {
+                jrn.transform.GetChild(0).GetComponent<Text>().text = journalEntries[2];
+            }
+            if (GlobalStuff.EntriesUnlocked >= 3)
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = journalEntries[3];
+            }
+            else
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
+            }
+        }
+        else if (currentPage == 4)
+        {
+            if (GlobalStuff.EntriesUnlocked >= 4)
+            {
+                jrn.transform.GetChild(0).GetComponent<Text>().text = journalEntries[4];
+            }
+            if (GlobalStuff.EntriesUnlocked >= 5)
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = journalEntries[5];
+            }
+            else
+            {
+                jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
+            }
+        }
+        else if (currentPage == 6)
+        {
+            jrn.transform.GetChild(0).GetComponent<Text>().text = journalEntries[6];
+            jrn.transform.GetChild(1).GetComponent<Text>().text = " ";
+        }
+    }
+
+    public void DestroyBoxes(){
 		for (int i = 0; i < numOfSpawn; i++) {
 			Destroy (boxes [i], 0);
 		}
@@ -208,6 +342,18 @@ public class GameManager : MonoBehaviour {
 			player.GetComponent<Player>().CanMove = false;
 		}
 	}
+
+    public void NewJournalEntry()
+    {
+        GlobalStuff.EntriesUnlocked++;
+        //Debug.Log(GlobalStuff.EntriesUnlocked);
+        //GlobalStuff.GetAlert = true;
+        if (!createAlert)
+        {
+            alert = Instantiate(myAlert, new Vector2(Screen.width - 150, Screen.height - 100), new Quaternion(0, 0, 0, 0), can.transform);
+            createAlert = true;
+        }
+    }
 
 	public int NumToSpawn{
 		get{ return numToSpawn; }

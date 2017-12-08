@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 	}
 
     void Movement() { //WORKS BETTER BUT STILL NEEDS TO BE IMPROVED
-		if (canMove) {
+		if (canMove && !GlobalStuff.IsPaused) {
 			//moving up
 			if (Input.GetKey(KeyCode.W) && !moveDir[0])
             {

@@ -16,6 +16,10 @@ public static class GlobalStuff {
 	private static bool useSpell;
 	private static bool haveQuestItem;
 	private static bool kindSpeak;
+    private static bool isPaused;
+    private static int entriesUnlocked;
+    private static bool getAlert;
+    private static bool curInteractBefore;
 
     public static Vector3 PrevPos {
         get {
@@ -158,6 +162,30 @@ public static class GlobalStuff {
         return baddiesAlive[pos];
     }
 
+    public static bool IsPaused
+    {
+        get { return isPaused; }
+        set { isPaused = value; }
+    }
+
+    public static int EntriesUnlocked
+    {
+        get { return entriesUnlocked; }
+        set { entriesUnlocked = value; }
+    }
+
+    public static bool GetAlert
+    {
+        get { return getAlert; }
+        set { getAlert = value; }
+    }
+
+    public static bool CurInteractBefore
+    {
+        get { return curInteractBefore; }
+        set { curInteractBefore = value; }
+    }
+
     public static void reset()
     {
         wasInBattle = false;
@@ -169,5 +197,8 @@ public static class GlobalStuff {
         useSpell = false;
         haveQuestItem = false;  
 		kindSpeak = false;
+        isPaused = false;
+        entriesUnlocked = 1;
+        getAlert = false;
     }
 }
