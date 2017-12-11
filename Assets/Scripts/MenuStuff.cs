@@ -98,7 +98,8 @@ public class MenuStuff : MonoBehaviour {
 
         if (!created)
         {
-            con = Instantiate(controls, can.transform);
+            //Instantiate(textbox, new Vector2(x,y), new Quaternion(0, 0, 0, 0), can.transform);
+            con = Instantiate(controls, new Vector2(Screen.width/3f, Screen.height/2), new Quaternion(0,0,0,0), can.transform);
             created = true;
         }
     }
