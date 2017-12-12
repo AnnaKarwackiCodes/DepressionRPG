@@ -83,7 +83,7 @@ public class MenuStuff : MonoBehaviour {
             viewControls();
         }
         else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)){
-            SceneManager.LoadScene("Area 1", LoadSceneMode.Single);
+            SceneManager.LoadScene("Starting_Area", LoadSceneMode.Single);
         }
     }
 
