@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour {
 
 		} else if (RoomName == "Area 3") {
 			if (trigger || GlobalStuff.UseSpell) {
-				numToSpawn = 20;
+				numToSpawn = 30;
 				spawnTextBoxes ();
 				time -= Time.deltaTime;
 			}

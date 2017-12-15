@@ -6,11 +6,13 @@ public class Dog : MonoBehaviour {
     private bool follow;
     private GameObject play;
     private Animator anime;
+    private AudioSource bork;
     // Use this for initialization
     void Start () {
         //follow = false;
         play = GameObject.Find("Player");
         anime = this.GetComponent<Animator>();
+        bork = this.transform.GetChild(0).GetComponent<AudioSource>();
         anime.enabled = false;
     }
 	
@@ -41,6 +43,7 @@ public class Dog : MonoBehaviour {
             }
            
         }
+        
     }
 
     void withinRange()
