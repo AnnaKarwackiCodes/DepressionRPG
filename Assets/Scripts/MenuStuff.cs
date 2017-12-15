@@ -82,6 +82,9 @@ public class MenuStuff : MonoBehaviour {
             //SceneManager.LoadScene("Area 1", LoadSceneMode.Single);
             viewControls();
         }
+        else if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && curButton == 1 && !control) {
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+        }
         else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)){
             SceneManager.LoadScene("Starting_Area", LoadSceneMode.Single);
         }
